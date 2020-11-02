@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>City Index Page</h1>
+
+{% for city in cities %}
+<a href="{% url 'city_detail' city.id %}">
+  <div>
+    <span>{{ city.name }}</span>
+  </div>
+</a>
+{% endfor %}
+
+{% endblock %} 

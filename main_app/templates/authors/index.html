@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Author Index Page</h1>
+
+{% for author in authors %}
+<a href="{% url 'author_detail' author.id %}">
+  <div>
+    <span>{{ author.name }}</span>
+  </div>
+</a>
+{% endfor %}
+
+{% endblock %} 

@@ -1,0 +1,24 @@
+{% load static %}
+<nav class="navbar navbar-inverse sticky-top">
+    <a class="nav-brand" href="{% url 'home' %}">Wayfarer</a>
+    <div id="homeNav" class="homeNav overlay">
+    <a id="nav-logo" class="nav-brand nav-logo" onclick="showNav()">
+        <img class="wayfarer_logo border-0" src="{% static 'images/wayfarer_logo.png' %}">
+    </a>
+    <!-- Button to close the overlay navigation -->
+        <div class="links">
+            <div class="link">
+                <a href="{% url 'cities_index' %}">Browse Cities</a>
+            </div>
+            <div class="link">
+                <a href="#">New Article</a>
+            </div>
+            <div class="link"></div>
+                <a href="{% url 'authors_index' %}">My Profile</a>
+            </div>
+        </div>
+    </div>
+    <a href="#modalLogin" data-toggle="modal" class="nav-brand nav-login">
+        Sign In
+    </a>
+</nav>

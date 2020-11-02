@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<section class="text-center">
+    <div class="container-fluid">
+      <div class="row about-row">
+        <div class="about-wayfarer col">
+          <h2 class="about-h2">Documented experiences by</h2>
+          <h2 class="about-h2">fellow travelers to help you</h2>  
+          <h2 class="about-h2">plan your next adventure.</h2>  
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck">
+        <div class="card rounded">
+          <!-- <img class="card-img-top" src="#"> -->
+          <div class="card-body">
+            <h5 class="card-title">Topic 1</h5>
+            <p class="card-text">Thoughtfully designed so you can spend less time thinking and more time doing.</p>
+          </div>
+        </div>
+        <div class="card rounded">
+          <!-- <img class="card-img-top" src="#"> -->
+          <div class="card-body">
+            <h5 class="card-title">Topic 2</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis itaque sit dolore, libero corrupti odit vel dolor optio.</p>
+          </div>
+        </div>
+        <div class="card rounded">
+          <!-- <img class="card-img-top" src="#"> -->
+          <div class="card-body">
+            <h5 class="card-title">Topic 3</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis itaque sit dolore, libero corrupti odit vel dolor optio.</p>
+          </div>
+        </div>
+      </div>
+</section>
+{% include 'registration/login.html' %}
+{% endblock %} 
