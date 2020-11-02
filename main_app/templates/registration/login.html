@@ -7,20 +7,33 @@
                 <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">&#xD7;</button>
             </div>
             <div class="modal-body py-4">
-                <form class="form  mx-auto w-75" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                <form class="form  mx-auto w-75" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" action="{% url 'login' %}">
+                
+                {% comment %} <form action="{% url 'login' %}" method="POST"> {% endcomment %}
+                    
+                    {% csrf_token %}
+
                     <div class="form-group">
                         <a href="{% url 'signup' %}" class="float-right text-info h6">New user?</a>
                         <label for="username">Username</label>
-                        <input type="text" class="form-control form-control-lg" name="username" id="username" required>
-                        <div class="invalid-feedback">Oops, you missed this one.</div>
+                        <input type="text" class="form-control form-control-lg" name="username" id="id_username" required>
+                        
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control form-control-lg" id="pwd1" required autocomplete="new-password">
+                        <input type="password" class="form-control form-control-lg" name="password" id="id_password" required autocomplete="new-password">
                     </div>
                     <div class="form-group py-4">
                         <button class="btn btn-outline-secondary btn-lg" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                        <button type="submit" class="btn btn-info btn-lg float-right" id="btnLogin">Login</button>
+                        
+						{% comment %} {% csrf_token %}
+
+						{{ form.as_p }} {% endcomment %}
+						
+						<input type="submit" class="btn btn-info btn-lg float-right" id="btnLogin" value="login">
+
+                        <input type="hidden" name="next" value="{{ next }}">
+
                     </div>
                 </form>
             </div>

@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from .models import City, Author, Article
 #from .forms import
+from django.contrib.auth.decorators import login_required
 
 #---------------------ADMIN---------------------------
 
@@ -26,28 +27,34 @@ def signup(request):
     
     user_form=UserCreationForm()
     context = {'user form': user_form, 'error_message': error_message}
-    return render(request, 'accounts/signup.html', context)
+    return render(request, 'registration/signup.html', context)
 
 
 def home (request):
-    return render(request, 'home.html')
+
+    login_form = AuthenticationForm()
+
+    return render(request, 'home.html', {'form': login_form})
 
 #----------------------Cities---------------------------
-
+@login_required
 def cities_index(request):
     cities = City.objects.all()
     return render(request, 'cities/index.html', { 'cities' : cities })
 
+
+@login_required
 def city_detail(request, city_id):
     city = City.objects.get(id=city_id)
     return render(request, 'cities/detail.html', { 'city' : city })
 
 #----------------------Authors-------------------------------
-
+@login_required
 def authors_index(request):
     authors = Author.objects.all()
     return render(request, 'authors/index.html', { 'authors' : authors })
 
+@login_required
 def author_detail(request, author_id):
     author = Author.objects.get(id=author_id)
     return render(request, 'authors/detail.html', { author : author })
