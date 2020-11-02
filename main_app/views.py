@@ -26,7 +26,7 @@ def signup(request):
     
     user_form=UserCreationForm()
     context = {'user form': user_form, 'error_message': error_message}
-    return render(request, 'home.html', context)
+    return render(request, 'accounts/signup.html', context)
 
 
 def home (request):
