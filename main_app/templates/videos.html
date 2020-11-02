@@ -1,0 +1,68 @@
+{% load static %}
+
+<div class="jumbotron">
+  <div class="col col-md-12 px-0">
+    <div id="video-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+<!-- Video Carousel Identifiers - markets to show number of slides
+      <ol class="carousel-indicators">
+        <li data-target="#video-carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#video-carousel" data-slide-to="1"></li>
+        <li data-target="#video-carousel" data-slide-to="2"></li>
+        <li data-target="#video-carousel" data-slide-to="3"></li>
+      </ol> -->
+<!--Video Carousel Section - this is where I'm including the actual videos from our static
+video folder -->
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video1.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video5.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+        <!-- <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video3.mp4' %}" type="video/mp4" />
+          </video>
+        </div> -->
+        <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video4.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video6.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+        <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video7.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+        <!-- <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video8.mp4' %}" type="video/mp4" />
+          </video>
+        </div> -->
+        <div class="carousel-item">
+          <video class="video-fluid" loop autoplay muted>
+            <source class="video-file" src="{% static 'videos/wayfarer_video9.mp4' %}" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+      <!--Video Carousel Controls-->
+      <a class="carousel-control-prev" href="#video-carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#video-carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>  
+</div>
