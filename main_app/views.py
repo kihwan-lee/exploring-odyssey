@@ -21,12 +21,13 @@ def signup(request):
             #new_form.user_id = user.id 
 
             login(request, user)
-        return redirect('home') #needs to change to profile when made
+            return redirect('home') #needs to change to profile when made
+        else:
+            error_message='Invalid sign-up try again'
     else:
-        error_message='Invalid sign-up try again'
-    
-    user_form=UserCreationForm()
-    context = {'user form': user_form, 'error_message': error_message}
+        user_form=UserCreationForm()
+
+    context = {'user_form': user_form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
 
