@@ -11,9 +11,19 @@
 <form method="POST" action="{% url 'signup' %}">
   {% csrf_token %}
 
-  {{ form.as_p }}
+    <div class="input-group mb-3">
+      <input type="text" name="username" placeholder = "username" required>
+    </div>
+    <div class="input-group mb-2">
+      <input type="password" name="password1" placeholder = "password1" required>
+    </div>
+    <div class="input-group mb-2">
+      <input type="password" name="password2" placeholder = "password2" required>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <input type="submit" class="signup" value="signup">
+    </div>
 
-  <input type="submit" class="signup" value="signup">
 </form>
 
 {% endblock content %}
