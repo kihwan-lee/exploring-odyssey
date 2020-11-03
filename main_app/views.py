@@ -65,9 +65,14 @@ def author_detail(request, author_id):
 
 #-------------------------------------- ARTICLES
 
-def articles(request):
+def articles_index(request):
     """Show all articles."""
     articles = Article.objects.order_by('created_on')
     context = {'articles': articles}
     return render(request, 'articles/index.html', context)
 
+def article_detail(request, article_id):
+    """Show a single article."""
+    article = Article.objects.get(id=article_id)
+    context = {'article': article}
+    return render(request, 'articles/detail.html', context)
