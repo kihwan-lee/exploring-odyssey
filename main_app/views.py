@@ -1,12 +1,12 @@
-from main_app.forms import Article_Form
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from .models import City, Author, Article
+from main_app.forms import Article_Form
+from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
-from .models import City, Author, Article
-#from .forms import
 from django.contrib.auth.decorators import login_required
+#from .forms import
 
 #---------------------ADMIN---------------------------
 
@@ -29,17 +29,19 @@ def signup(request):
     context = {'user form': user_form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
+# ------------------------------------- STATIC PAGES
 def home (request):
-
     login_form = AuthenticationForm()
-
     return render(request, 'home.html', {'form': login_form})
+
+def about(request):
+    return render(request, 'about.html')
 
 #----------------------Cities---------------------------
 @login_required
 def cities_index(request):
     cities = City.objects.all()
+    
     return render(request, 'cities/index.html', { 'cities' : cities })
 
 

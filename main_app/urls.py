@@ -2,12 +2,11 @@ from django.urls import path, include
 from . import views 
 from django.contrib import admin
 from django.conf.urls.static import static
-from .models import City, Author, Article
 
 urlpatterns = [
     # Static Routes
     path('', views.home, name='home'),
-    # path('about/', views.about, name='about'),
+    path('about/', views.about, name='about'),
 
     # City Routes
     path('cities/', views.cities_index, name='cities_index'),
