@@ -8,17 +8,20 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
 
-    # City Routes
+    # Cities Routes
     path('cities/', views.cities_index, name='cities_index'),
     # path('cities/new/', views.add_city, name='add_city'),
     # path('cities/<int:city_id>/delete', views.delete_city, name='delete_city),
     path('cities/<int:city_id>', views.city_detail, name='city_detail'),
     # path('cities/<int:city)/edit/' views.edit_city, name='edit_city'),
 
-    # City Posts
-    # path('cities/<int:city_id>/add_post/', views.add_post, name='add_post'),
+    # Articles Routes
+    # Page that shows all articles.
+    path('articles/', views.articles, name='articles'),
+    
+    # path('cities/<int:city_id>/add_article/', views.add_article, name='add_article'),
 
-    # Authors of Posts
+    # Authors Routes
     path('authors/', views.authors_index, name='authors_index'),
     path('authors/<int:author_id>', views.author_detail, name='author_detail'),
 

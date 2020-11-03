@@ -8,8 +8,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 #from .forms import
 
-#---------------------ADMIN---------------------------
-
+#-------------------------------------- ADMIN/AUTH
 def signup(request):
     error_message=''
 
@@ -23,11 +22,12 @@ def signup(request):
             login(request, user)
         return redirect('home') #needs to change to profile when made
     else:
-        error_message='Invalid sign-up try again'
+        error_message='Invalid sign up - try again'
     
     user_form=UserCreationForm()
     context = {'user form': user_form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
 
 # ------------------------------------- STATIC PAGES
 def home (request):
@@ -37,20 +37,21 @@ def home (request):
 def about(request):
     return render(request, 'about.html')
 
-#----------------------Cities---------------------------
+
+#-------------------------------------- CITIES
 @login_required
 def cities_index(request):
     cities = City.objects.all()
-    
-    return render(request, 'cities/index.html', { 'cities' : cities })
 
+    return render(request, 'cities/index.html', { 'cities' : cities })
 
 @login_required
 def city_detail(request, city_id):
     city = City.objects.get(id=city_id)
     return render(request, 'cities/detail.html', { 'city' : city })
 
-#----------------------Authors-------------------------------
+
+#-------------------------------------- AUTHORS
 @login_required
 def authors_index(request):
     authors = Author.objects.all()
@@ -60,4 +61,13 @@ def authors_index(request):
 def author_detail(request, author_id):
     author = Author.objects.get(id=author_id)
     return render(request, 'authors/detail.html', { author : author })
+
+
+#-------------------------------------- ARTICLES
+
+def articles(request):
+    """Show all articles."""
+    articles = Article.objects.order_by('created_on')
+    context = {'articles': articles}
+    return render(request, 'articles/index.html', context)
 
