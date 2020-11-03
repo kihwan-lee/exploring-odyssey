@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<p>Articles</p>
+
+  <ul>
+    {% for article in articles %}
+	  <li>{{ article }}</li>
+	{% empty %}
+	  <li>No articles have been added yet.</li>
+	{% endfor %}
+  </ul>
+
+{% endblock content %}

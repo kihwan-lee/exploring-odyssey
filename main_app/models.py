@@ -34,10 +34,12 @@ class Author(models.Model):
 
 
 class Article(models.Model):
-    title = models.CharField(max_length=100)
+    """An Article the user is writing."""
+    title = models.CharField(max_length=200)
     content = models.TextField()
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     created_on = models.DateField(auto_now_add=True)
+
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
     def __str__(self):
