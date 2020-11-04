@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import City, Author, Article
-from main_app.forms import Article_Form
+from main_app.forms import Article_Form, Profile_Form
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -61,9 +61,22 @@ def authors_index(request):
     return render(request, 'authors/index.html', context)
 
 @login_required
-def author_detail(request, author_id):
-    author = Author.objects.get(id=author_id)
-    return render(request, 'authors/detail.html', { author : author })
+def author_edit(request, user_id):
+    error_message=''
+    # authors = Author.objects.get(id=user_id)
+    if request.method == 'POST':
+        author_form = Profile_Form(request.POST, instance = request.user.author)
+        if author_form.is_valid():
+            author_form.save()
+            return redirect('authors_index')
+        else:
+            error_message='Invalid sign-up try again'
+    else: 
+        author_form = Profile_Form(instance=request.user.author)
+    
+        context = {'author_form': author_form}
+
+        return render(request, 'authors/edit.html', context)
 
 #@login_required
 #def edit_author(request, user_id):

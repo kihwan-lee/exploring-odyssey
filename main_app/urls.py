@@ -25,6 +25,7 @@ urlpatterns = [
 
     # Author Routes
     path('authors/', views.authors_index, name='authors_index'),
+    path('authors/<int:user_id>/edit/', views.author_edit, name='author_edit'),
     # path('authors/<int:user_id>', views.author_detail, name='author_detail'),
 
     #Auth
