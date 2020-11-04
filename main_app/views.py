@@ -30,6 +30,8 @@ def signup(request):
     context = {'user_form': user_form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+def loginError (request):
+    return render(request, 'home.html')
 
 # ------------------------------------- STATIC PAGES
 def home (request):
@@ -41,26 +43,26 @@ def about(request):
 
 
 #-------------------------------------- CITIES
-@login_required
+@login_required(login_url= 'loginError')
 def cities_index(request):
     cities = City.objects.all()
 
     return render(request, 'cities/index.html', { 'cities' : cities })
 
-@login_required
+@login_required(login_url= 'loginError')
 def city_detail(request, city_id):
     city = City.objects.get(id=city_id)
     return render(request, 'cities/detail.html', { 'city' : city })
 
 
 #-------------------------------------- AUTHORS
-@login_required
+@login_required(login_url= 'loginError')
 def authors_index(request):
     articles = Article.objects.filter(author=request.user)
     context = { 'articles' : articles, 'user' : request.user, 'author' : request.user.author }
     return render(request, 'authors/index.html', context)
 
-@login_required
+@login_required(login_url= 'loginError')
 def author_edit(request, user_id):
     error_message=''
     # authors = Author.objects.get(id=user_id)
