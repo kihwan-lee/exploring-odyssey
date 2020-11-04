@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<form action="{% url 'author_edit' user.id %}" method="POST">
+    {% csrf_token %}
+    {% for field in author_form %}
+    {{ field }}
+    {% endfor %}
+    <input type="submit" class="btn-info" value="submit"> 
+  </form>
+
+  {% endblock %} 
