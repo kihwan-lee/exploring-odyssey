@@ -28,6 +28,6 @@ urlpatterns = [
     path('authors/<int:author_id>', views.author_detail, name='author_detail'),
 
     #Auth
-    path('accounts/signup/', views.signup, name='signup')
+    path('registration/signup/', views.signup, name='signup')
 ]
 
