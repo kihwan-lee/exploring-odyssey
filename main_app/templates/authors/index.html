@@ -7,7 +7,19 @@
   <div>
     <span>{{ author.name }}</span>
   </div>
-</a>
+    <div>
+    <span>{{ author.city }}</span>
+  </div>
 {% endfor %}
+
+  <ul>
+  {% for article in articles %}
+    <li>{{ article.title }}</li>
+  {% empty %}
+    <li>No articles have been added yet.</li>
+  {% endfor %}
+  </ul>
+  
+</a>
 
 {% endblock %} 
