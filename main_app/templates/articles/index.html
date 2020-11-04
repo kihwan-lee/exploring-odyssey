@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<p>Articles</p>
+
+  <ul>
+    {% for article in articles %}
+	  <a href="{% url 'article_detail' article.id %}">
+	    <li>{{ article }}</li>
+	  </a>
+	{% empty %}
+	    <li>No articles have been added yet.</li>
+	{% endfor %}
+  </ul>
+
+{% endblock content %}
