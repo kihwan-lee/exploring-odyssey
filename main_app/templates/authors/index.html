@@ -15,8 +15,8 @@
   <ul>
   {% for article in articles %}
     <li>{{ article.title }}</li>
-  {% comment %} {% empty %}
-    <li>No articles have been added yet.</li> {% endcomment %}
+  {% empty %}
+    <li>No articles have been added yet.</li>
   {% endfor %}
   </ul>
   

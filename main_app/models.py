@@ -22,12 +22,10 @@ class Author(models.Model):
     name = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    joined_on = models.DateField(editable=True)
-    def save(self, *args, **kwargs):
-        return super(Author, self).save(*args, **kwargs)
+    joined_on = models.DateTimeField(auto_now_add=True)
 
-    imageURL = models.ImageField(upload_to = 'profile_image', blank=True, default = '')
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    imageURL = models.ImageField(upload_to = 'profile_image', blank=True, default = '', null = True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null = True)
     
     def __str__(self):
         return self.name
@@ -38,14 +36,6 @@ class Author(models.Model):
     def get_posts(self):
         return self.user.posts.all()
 
-    @receiver(post_save, sender=User)
-    def create_author_profile(sender, instance, created, **kwargs):
-        if created:
-            Author.objects.create(user=instance)
-        
-    @receiver(post_save, sender=User)
-    def save_author_profile(sender, instance, **kwargs):
-        instance.author.save()
 
 
 class Article(models.Model):
@@ -54,10 +44,20 @@ class Article(models.Model):
     content = models.TextField()
     created_on = models.DateField(auto_now_add=True)
 
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
 
 
+#-------------------------Profile Create/Update
+
+@receiver(post_save, sender=User)
+def create_author_profile(sender, instance, created, **kwargs):
+    if created:
+        Author.objects.create(user=instance)
+    
+@receiver(post_save, sender=User)
+def save_author_profile(sender, instance, **kwargs):
+    instance.author.save()

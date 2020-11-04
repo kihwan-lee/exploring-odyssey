@@ -17,10 +17,11 @@ def signup(request):
         # article_form = Article_Form(data = {'name': request.POST['name'], 'city': request.POST['city']})
         if user_form.is_valid():
             user = user_form.save()
+            
             #new_form.user_id = user.id 
 
             login(request, user)
-            return redirect('author_detail') #needs to change to profile when made
+            return redirect('authors_index') 
         else:
             error_message='Invalid sign-up try again'
     else:
@@ -55,8 +56,9 @@ def city_detail(request, city_id):
 #-------------------------------------- AUTHORS
 @login_required
 def authors_index(request):
-    authors = Author.objects.all()
-    return render(request, 'authors/index.html', { 'authors' : authors })
+    articles = Article.objects.filter(author=request.user)
+    context = { 'articles' : articles, 'user' : request.user, 'author' : request.user.author }
+    return render(request, 'authors/index.html', context)
 
 @login_required
 def author_detail(request, author_id):
