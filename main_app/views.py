@@ -63,6 +63,12 @@ def author_detail(request, author_id):
     author = Author.objects.get(id=author_id)
     return render(request, 'authors/detail.html', { author : author })
 
+#@login_required
+#def edit_author(request, user_id):
+    #if request.method == 'POST' :
+    #add edit to profile functionality
+        
+
 
 #-------------------------------------- ARTICLES
 
