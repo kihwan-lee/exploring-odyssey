@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-#from .forms import
+
 
 #-------------------------------------- ADMIN/AUTH
 def signup(request):
@@ -20,7 +20,7 @@ def signup(request):
             #new_form.user_id = user.id 
 
             login(request, user)
-            return redirect('home') #needs to change to profile when made
+            return redirect('author_detail') #needs to change to profile when made
         else:
             error_message='Invalid sign-up try again'
     else:
