@@ -55,8 +55,9 @@ def city_detail(request, city_id):
 #-------------------------------------- AUTHORS
 @login_required
 def authors_index(request):
-    authors = Author.objects.all()
-    return render(request, 'authors/index.html', { 'authors' : authors })
+    articles = Article.objects.filter(author=request.user)
+    context = { 'articles' : articles, 'user' : request.user, 'author' : request.user.author }
+    return render(request, 'authors/index.html', context)
 
 @login_required
 def author_detail(request, author_id):
