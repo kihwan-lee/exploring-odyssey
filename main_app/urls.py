@@ -29,6 +29,9 @@ urlpatterns = [
     # path('authors/<int:user_id>', views.author_detail, name='author_detail'),
 
     #Auth
-    path('registration/signup/', views.signup, name='signup')
+    path('registration/signup/', views.signup, name='signup'),
+
+    # Login Routes
+    path('', views.login, name='loginError')
 ]
 
