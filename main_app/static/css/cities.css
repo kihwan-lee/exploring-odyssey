@@ -22,12 +22,6 @@ label {
     margin-bottom: none !important;
 }
 
-/**********************/
-/* Bootstrap Override */
-/**********************/
-.px-4 {
-    padding: 0 3rem !important;
-}
 /******************/
 /* Navbar Styling */
 /******************/
@@ -35,48 +29,6 @@ label {
     background: #e9ecef; 
     padding: 2rem 3.5rem 0 3.5rem !important;
     font-family: 'Josefin Slab', serif;
-}
-
-/******************/
-/* Video Carousel */
-/******************/
-.jumboton {
-    background: #e9ecef;
-}
-
-.carousel .carousel-item {
-    height: 500px;
-}
-  
-  .carousel-item video {
-    position: absolute;
-    object-fit: cover;
-    top: 0;
-    left: 0;
-    max-height: -webkit-fill-available;
-    width: inherit;
-}
-
-/******************/
-/*  Home Content  */
-/******************/
-.about-h2 {
-    font-family: 'Josefin Slab', serif !important;
-}
-
-.about-wayfarer {
-    background: rgba(255, 255, 255, 0.4);
-    padding: 2rem 2rem;
-    border-radius: 10px;
-}
-
-.about-row {
-    margin: auto;
-    width: fit-content;
-}
-
-.card-deck {
-    padding: 50px;
 }
 
 
@@ -159,48 +111,95 @@ label {
     width: 100%;
 }
 
-/*********************/
-/* Registration Page */
-/*********************/
 
-.registration-card {
-    align-items: center;
-    align-items: center;
-    padding: 1.5rem;
-    width: 50%;
-    float: right;
-    height: 100%;
+/**************************/
+/*  Cities Index Styling  */
+/**************************/
+.search {
+    background-image: url("/static/images/indonesia.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: top;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 700px;
+    height: 87.5vh !important;
+    margin-bottom: 40px;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
 }
 
-.info-span {
-    text-decoration: underline;
-}
-
-.signup-info {
-    padding: 1rem;
-    width: 50%;
-}
-
-.signup-ol {
-    list-style: none;
+.search-content {
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    padding-top: 250px;
+    padding-left: 0px;
+    padding-right: 0px;
     text-align: center;
-    padding-inline-start: 0 !important;
+    justify-content: center;
 }
 
-/*********************/
-/* Media Breakpoints */
-/*********************/
-@media (min-width: 576px) {
-.jumbotron {
-    padding: 4rem 2rem 0 2rem !important;
-    }
+.search-header {
+    min-inline-size: -webkit-fill-available;
 }
 
-@media screen and (max-height: 450px) {
-    .overlay a {font-size: 20px}
-    .overlay .closebtn {
-        font-size: 40px;
-        top: 15px;
-        right: 35px;
-        }
-    }
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+}
+
+#wrapper {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.exploreGrid {
+    margin: 0;
+    padding-bottom: 60px;
+}
+
+.cityRow {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+
+.cityCard {
+    flex: 25%;
+    max-width: 33.3%;
+    padding: 0 4px;
+  }
+
+.cityCard img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+    height: 400px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s linear;
+}
+
+.exploreGrid h1 {
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.cityCard h3 {
+    letter-spacing: 1px;
+    color: black;
+}
+
+.cityCardName {
+    background-color: white;
+    position: relative;
+    display: inline-block;
+    margin-top: -80px;
+    padding: 30px;
+}
