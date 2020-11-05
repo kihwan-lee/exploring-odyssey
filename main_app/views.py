@@ -15,7 +15,10 @@ def signup(request):
     error_message=''
 
     if request.method == 'POST':
-        user_form = UserCreationForm(data = {'username':request.POST['username'], 'password1': request.POST['password1'], 'password2': request.POST['password2']})
+        user_form = UserCreationForm(data = {
+            'username':request.POST['username'], 
+            'password1': request.POST['password1'], 
+            'password2': request.POST['password2']})
         # article_form = Article_Form(data = {'name': request.POST['name'], 'city': request.POST['city']})
         if user_form.is_valid():
             user = user_form.save()
@@ -67,7 +70,7 @@ def city_detail(request, city_id):
 #-----------------------------------------------------------------------------#
 @login_required(login_url= 'loginError')
 def authors_index(request):
-    articles = Article.objects.filter(author=request.user)
+    articles = Article.objects.filter(author=request.user.id)
     author = Author.objects.filter(user=request.user)
     context = { 'articles' : articles, 'user' : request.user, 'author' : author }
     return render(request, 'authors/index.html', context)
