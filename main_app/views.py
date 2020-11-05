@@ -8,7 +8,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 
 
-#-------------------------------------- ADMIN/AUTH
+#-----------------------------------------------------------------------------#
+#                              A D M I N / A U T H                            #
+#-----------------------------------------------------------------------------#
 def signup(request):
     error_message=''
 
@@ -33,7 +35,9 @@ def signup(request):
 def loginError (request):
     return render(request, 'home.html')
 
-# ------------------------------------- STATIC PAGES
+#-----------------------------------------------------------------------------#
+#                                S T A T I C                                  #
+#-----------------------------------------------------------------------------#
 def home (request):
     login_form = AuthenticationForm()
     return render(request, 'home.html', {'form': login_form})
@@ -42,7 +46,9 @@ def about(request):
     return render(request, 'about.html')
 
 
-#-------------------------------------- CITIES
+#-----------------------------------------------------------------------------#
+#                                C I T I E S                                  #
+#-----------------------------------------------------------------------------#
 @login_required(login_url= 'loginError')
 def cities_index(request):
     cities = City.objects.all()
@@ -57,7 +63,9 @@ def city_detail(request, city_id):
     return render(request, 'cities/detail.html', { 'city' : city })
 
 
-#-------------------------------------- AUTHORS
+#-----------------------------------------------------------------------------#
+#                                 A U T H O R S                               #
+#-----------------------------------------------------------------------------#
 @login_required(login_url= 'loginError')
 def authors_index(request):
     articles = Article.objects.filter(author=request.user)
@@ -87,31 +95,70 @@ def author_edit(request, user_id):
     #if request.method == 'POST' :
     #add edit to profile functionality
         
-
-
-#-------------------------------------- ARTICLES
-
+#-----------------------------------------------------------------------------#
+#                                A R T I C L E S                              #
+#-----------------------------------------------------------------------------#
+"""Show all articles."""
 def articles_index(request):
-    """Show all articles."""
     articles = Article.objects.order_by('created_on')
     context = {'articles': articles}
     return render(request, 'articles/index.html', context)
 
+"""Show a single article."""
 def article_detail(request, article_id):
-    """Show a single article."""
     article = Article.objects.get(id=article_id)
     context = {'article': article}
     return render(request, 'articles/detail.html', context)
 
-def article_add(request, user_id):
-    """Adds an Article"""
-    form = Article_Form(request.POST)
-    
-    if form.is_valid():
-        article_add = form.save(commit=False)
-        article_add.user_id = user_id
-        article_add.save()
-    
-    context = {'form': form, 'user_id': user_id}
+"""Adds an Article"""
+def article_add(request, city_id):
+    city = City.objects.get(id = city_id)
+    if request.method == 'POST':
+        new_form = Article_Form(request.POST)
+        if new_form.is_valid():
+            new_article = new_form.save(commit=False)
+            new_article.author_id = request.user.id
+            new_article.city = city
+            new_article.save()
 
-    return redirect('article_detail', context)
+            return redirect('city_detail', city_id)
+    else: 
+        new_form = Article_Form()
+        context = {
+            'new_form': new_form,
+            'city': city
+        }
+        return render(request, 'articles/add.html', context)
+
+"""Edit an Article"""
+# We want to identify the article by its 'id'. 
+# When a user presses a button to "Edit", this will trigger a POST).
+# We want to get the selected Article object, render the form to our
+# HTML template. If the user fulfills the form's requirements before
+# submitting the form, it's saved and they'll be redirected.
+def edit_article(request, article_id):
+    sel_article = Article.objects.get(id=article_id)
+    # Naming convention: "sel" => selected #
+    if request.method == 'POST':
+        art_form = Article_Form(request.POST, instance=sel_article)
+        if art_form.is_valid():
+            updated_article = art_form.save()
+            return redirect('article_detail', updated_article.id)
+    else:
+        art_form = Article_Form(instance=sel_article)
+        context = {
+            'article': sel_article,
+            'art_form': art_form
+        }
+        return render(request, 'articles/edit.html', context)
+
+"""Delete an Article"""
+# We want to identify the article by its 'id'. 
+# When a user presses a button to "Delete", this will trigger a POST).
+# We want to get the selected Article object and delete it
+# then redirect them to the main cities_index
+def delete_article(request, article_id):
+    if request.method == 'POST':
+        Article.objects.get(id=article_id).delete()
+
+        return redirect('cities_index')
