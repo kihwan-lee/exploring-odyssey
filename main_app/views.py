@@ -68,7 +68,8 @@ def city_detail(request, city_id):
 @login_required(login_url= 'loginError')
 def authors_index(request):
     articles = Article.objects.filter(author=request.user)
-    context = { 'articles' : articles, 'user' : request.user, 'author' : request.user.author }
+    author = Author.objects.filter(user=request.user)
+    context = { 'articles' : articles, 'user' : request.user, 'author' : author }
     return render(request, 'authors/index.html', context)
 
 @login_required(login_url= 'loginError')
