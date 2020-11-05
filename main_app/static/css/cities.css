@@ -152,6 +152,21 @@ label {
     justify-content: center;
 }
 
+.scroll-indicator {
+    position: absolute;
+    bottom: 10%;
+}
+
+.scroll-arrow {
+    color: white;
+    position: absolute;
+    bottom: 5%;
+}
+
+.search-span {
+    letter-spacing: 2px;
+}
+
 #wrapper {
     min-height: 100%;
     height: auto;
