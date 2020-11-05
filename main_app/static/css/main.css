@@ -188,6 +188,19 @@ label {
 }
 
 /*********************/
+/*   Article Index   */
+/*********************/
+
+li.article-lists {
+    list-style: none !important;
+    padding-left: 0;
+}
+
+.good-bye-padding {
+    padding-inline-start: 0 !important;
+}
+
+/*********************/
 /* Media Breakpoints */
 /*********************/
 @media (min-width: 576px) {
