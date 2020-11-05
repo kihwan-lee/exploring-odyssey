@@ -54,6 +54,22 @@ class Article(models.Model):
         return self.title
 
 
+class Comment(models.Model):
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="comments")
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
+
+
 #-------------------------Profile Create/Update
 
 @receiver(post_save, sender=User)

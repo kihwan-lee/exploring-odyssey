@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import City, Author, Article
-from main_app.forms import Article_Form, Profile_Form
+from main_app.forms import Article_Form, Profile_Form, Comment_Form
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -109,9 +109,30 @@ def articles_index(request):
 
 """Show a single article."""
 @login_required(login_url= 'loginError')
+
 def article_detail(request, article_id):
     article = Article.objects.get(id=article_id)
-    context = {'article': article}
+    comments = article.comments.filter(active=True)
+    new_comment = None
+
+    if request.method == 'POST':
+        comment_form = Comment_Form(data=request.POST)
+        if comment_form.is_valid():
+
+            new_comment = comment_form.save(commit=False)
+            new_comment.article = article
+            new_comment.save()
+    
+    else:
+        comment_form = Comment_Form()
+
+    context = {
+        'article': article,
+        'comments': comments,
+        'new_comment': new_comment,
+        'comment_form': comment_form
+    }
+
     return render(request, 'articles/detail.html', context)
 
 """Adds an Article"""
@@ -169,3 +190,5 @@ def delete_article(request, article_id):
         Article.objects.get(id=article_id).delete()
 
         return redirect('cities_index')
+
+
