@@ -2,35 +2,33 @@
 {% load static %}
 
 {% block content %}
-<br>
-<br>
-<h1>{{ city.name }}</h1>
 
-<div>
-  <span>
-    <p>City Name: {{ city.name }}</p>
-	  <p>City Image: {{ city.image }}</p>
-  </span>
-  <span>
+<div class="jumbotron-fluid">
+  <div class="cityName">
+      <h2 class="text-light">{{ city.name }}</h2>
+  </div>
+  <div class="jumbo-img-container">
     <img src="{% static 'images/cities/chicago.jpg' %}">
-  </span>
-  <span>
-    {% for article in city.article_set.all %}
-    <a href="{% url 'article_detail' article.id %}">
-      <ul>
-        {{ article }}
-      </ul>
-    </a>
-    {% endfor %}
-  </span>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4">
+        <span>
+          {% for article in city.article_set.all %}
+          <a href="{% url 'article_detail' article.id %}">
+            <ul>
+              {{ article }}
+            </ul>
+          </a>
+          {% endfor %}
+        </span>
+    
+      </div>
+      <div class="col-xl-8">
+        <a href="{% url 'article_add' city.id %}" class="btn">Add Post</a>
+      </div>
+    </div>
+  </div>
 </div>
-
-<form method="POST" action="{% url 'article_add' user.id %}">
-  {% csrf_token %}
-  
-  {{ form.as_p }}
-
-  <input type="submit" class="btn-info">
-</form>
 
 {% endblock %} 

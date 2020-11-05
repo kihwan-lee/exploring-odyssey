@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST" action="{% url 'article_add' city.id %}">
+  {% csrf_token %}
+  {{ new_form.as_p }}
+  <button type="submit" class="btn-info">Create Article</button>
+</form>
+
+{% endblock %} 
