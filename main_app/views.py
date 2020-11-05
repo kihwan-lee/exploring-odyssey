@@ -49,7 +49,6 @@ def about(request):
 #-----------------------------------------------------------------------------#
 #                                C I T I E S                                  #
 #-----------------------------------------------------------------------------#
-@login_required(login_url= 'loginError')
 def cities_index(request):
     cities = City.objects.all()
 
@@ -105,12 +104,14 @@ def articles_index(request):
     return render(request, 'articles/index.html', context)
 
 """Show a single article."""
+@login_required(login_url= 'loginError')
 def article_detail(request, article_id):
     article = Article.objects.get(id=article_id)
     context = {'article': article}
     return render(request, 'articles/detail.html', context)
 
 """Adds an Article"""
+@login_required(login_url= 'loginError')
 def article_add(request, city_id):
     city = City.objects.get(id = city_id)
     if request.method == 'POST':
@@ -136,6 +137,7 @@ def article_add(request, city_id):
 # We want to get the selected Article object, render the form to our
 # HTML template. If the user fulfills the form's requirements before
 # submitting the form, it's saved and they'll be redirected.
+@login_required(login_url= 'loginError')
 def edit_article(request, article_id):
     sel_article = Article.objects.get(id=article_id)
     # Naming convention: "sel" => selected #
@@ -157,6 +159,7 @@ def edit_article(request, article_id):
 # When a user presses a button to "Delete", this will trigger a POST).
 # We want to get the selected Article object and delete it
 # then redirect them to the main cities_index
+@login_required(login_url= 'loginError')
 def delete_article(request, article_id):
     if request.method == 'POST':
         Article.objects.get(id=article_id).delete()
