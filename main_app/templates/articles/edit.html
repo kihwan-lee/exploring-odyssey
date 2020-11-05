@@ -2,8 +2,8 @@
 {% block title %}Edit Article{% endblock %}
 
 {% block content %}
+<a class="mt-5 position-absolute" href="{% url 'article_detail' article.id %}">← back</a>
 <div class="container pt-5 text-center">
-    <h1>Edit Article</h1>
     <div class="card mx-xl-5 bg-transparent border-0">
         <div class="card-body">
             <form method="post" action="{% url 'edit_article' article.id %}">

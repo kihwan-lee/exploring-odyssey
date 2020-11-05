@@ -1,35 +1,39 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1>Profile Page</h1>
-<h2>{{ user.username }}</h2>
-
+<div class= "container-fluid text-center pt-5">
+  <h1>Profile Page</h1>
+</div>
 
 <div class= "container-fluid text-center">
   <div class= "row">
     <div class= "col-xl-6">
-      <div class="card">
+      <div class="card pt-4">
         <div class="card-title">
           <h2>Articles</h2>
         </div>
         <div class="card-body">
-          <ul>
+          <ul class="good-bye-padding">
           {% for article in articles %}
-          <span><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></span>
+          <li class="article-lists"><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></li>
           {% empty %}
-            <span>No articles have been added yet.</span>
+            <li class="article-lists">No articles have been added yet.</li>
           {% endfor %}
           </ul>
         </div>
       </div>
     </div>
     <div class= "col-xl-6">
-      <div class="card">
+      <div class="card pt-4">
         <div class="card-title">
           <h2>Profile</h2>
         </div>
+        <div class="card-top">
+          {% comment %} Author Pic: <img src="{{ img.image.url }}" > {% endcomment %}
+        </div>
         <div class="card-body">
           <div>
-            <span>Username: {{ user.author.name }}</span>
+            <span>Username: {{ request.user }}</span>
           </div>
           <div>
             <span>City: {{ user.author.city }}</span>

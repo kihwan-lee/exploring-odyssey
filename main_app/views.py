@@ -15,7 +15,10 @@ def signup(request):
     error_message=''
 
     if request.method == 'POST':
-        user_form = UserCreationForm(data = {'username':request.POST['username'], 'password1': request.POST['password1'], 'password2': request.POST['password2']})
+        user_form = UserCreationForm(data = {
+            'username':request.POST['username'], 
+            'password1': request.POST['password1'], 
+            'password2': request.POST['password2']})
         # article_form = Article_Form(data = {'name': request.POST['name'], 'city': request.POST['city']})
         if user_form.is_valid():
             user = user_form.save()
@@ -49,7 +52,6 @@ def about(request):
 #-----------------------------------------------------------------------------#
 #                                C I T I E S                                  #
 #-----------------------------------------------------------------------------#
-@login_required(login_url= 'loginError')
 def cities_index(request):
     cities = City.objects.all()
 
@@ -68,8 +70,9 @@ def city_detail(request, city_id):
 #-----------------------------------------------------------------------------#
 @login_required(login_url= 'loginError')
 def authors_index(request):
-    articles = Article.objects.filter(author=request.user)
-    context = { 'articles' : articles, 'user' : request.user, 'author' : request.user.author }
+    articles = Article.objects.filter(author=request.user.id)
+    author = Author.objects.filter(user=request.user)
+    context = { 'articles' : articles, 'user' : request.user, 'author' : author }
     return render(request, 'authors/index.html', context)
 
 @login_required(login_url= 'loginError')
@@ -105,12 +108,14 @@ def articles_index(request):
     return render(request, 'articles/index.html', context)
 
 """Show a single article."""
+@login_required(login_url= 'loginError')
 def article_detail(request, article_id):
     article = Article.objects.get(id=article_id)
     context = {'article': article}
     return render(request, 'articles/detail.html', context)
 
 """Adds an Article"""
+@login_required(login_url= 'loginError')
 def article_add(request, city_id):
     city = City.objects.get(id = city_id)
     if request.method == 'POST':
@@ -136,6 +141,7 @@ def article_add(request, city_id):
 # We want to get the selected Article object, render the form to our
 # HTML template. If the user fulfills the form's requirements before
 # submitting the form, it's saved and they'll be redirected.
+@login_required(login_url= 'loginError')
 def edit_article(request, article_id):
     sel_article = Article.objects.get(id=article_id)
     # Naming convention: "sel" => selected #
@@ -157,6 +163,7 @@ def edit_article(request, article_id):
 # When a user presses a button to "Delete", this will trigger a POST).
 # We want to get the selected Article object and delete it
 # then redirect them to the main cities_index
+@login_required(login_url= 'loginError')
 def delete_article(request, article_id):
     if request.method == 'POST':
         Article.objects.get(id=article_id).delete()
