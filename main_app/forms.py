@@ -9,5 +9,6 @@ class Profile_Form(ModelForm):
 class Article_Form(ModelForm):
     class Meta:
         model = Article
-        fields = ['city', 'title', 'content']
+        fields = ['title', 'content']
+        # removed 'city' from form
 
