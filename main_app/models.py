@@ -46,6 +46,9 @@ class Article(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
+    
+    class Meta:
+        ordering = ['-created_on']
 
     def __str__(self):
         return self.title

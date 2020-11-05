@@ -52,6 +52,8 @@ def cities_index(request):
 @login_required(login_url= 'loginError')
 def city_detail(request, city_id):
     city = City.objects.get(id=city_id)
+    cities = City.objects.all()
+
     return render(request, 'cities/detail.html', { 'city' : city })
 
 
@@ -100,3 +102,16 @@ def article_detail(request, article_id):
     article = Article.objects.get(id=article_id)
     context = {'article': article}
     return render(request, 'articles/detail.html', context)
+
+def article_add(request, user_id):
+    """Adds an Article"""
+    form = Article_Form(request.POST)
+    
+    if form.is_valid():
+        article_add = form.save(commit=False)
+        article_add.user_id = user_id
+        article_add.save()
+    
+    context = {'form': form, 'user_id': user_id}
+
+    return redirect('article_detail', context)

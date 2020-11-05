@@ -1,13 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>City Detail Page</h1>
+<br>
+<br>
+<h1>{{ city.name }}</h1>
 
 <div>
   <span>
     <p>City Name: {{ city.name }}</p>
-	<p>City Image: {{ city.image }}</p>
+	  <p>City Image: {{ city.image }}</p>
+  </span>
+  <span>
+    <img src="{% static 'images/cities/chicago.jpg' %}">
+  </span>
+  <span>
+    {% for article in city.article_set.all %}
+    <a href="{% url 'article_detail' article.id %}">
+      <ul>
+        {{ article }}
+      </ul>
+    </a>
+    {% endfor %}
   </span>
 </div>
+
+<form method="POST" action="{% url 'article_add' user.id %}">
+  {% csrf_token %}
+  
+  {{ form.as_p }}
+
+  <input type="submit" class="btn-info">
+</form>
 
 {% endblock %} 

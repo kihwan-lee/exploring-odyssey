@@ -20,8 +20,7 @@ urlpatterns = [
     path('articles/', views.articles_index, name='articles_index'),
     # Detail page for a single article.
     path('articles/<int:article_id>/', views.article_detail, name='article_detail'),
-
-    # path('cities/<int:city_id>/add_article/', views.add_article, name='add_article'),
+    path('cities/<int:city_id>/article_add/', views.article_add, name='article_add'),
 
     # Author Routes
     path('authors/', views.authors_index, name='authors_index'),
