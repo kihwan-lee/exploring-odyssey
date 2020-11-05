@@ -200,6 +200,10 @@ li.article-lists {
     padding-inline-start: 0 !important;
 }
 
+textarea {
+    width: 650px !important;
+}
+
 /*********************/
 /* Media Breakpoints */
 /*********************/
