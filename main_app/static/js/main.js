@@ -31,3 +31,22 @@ function validateSelect(e) {
   $('.needs-validation select').on('change', e => validateSelect(e))
   $('.needs-validation').on('submit', e => validateSelect(e))
 });
+
+// Ajax call to signal views.py for city page
+// var url = $( '#selection-form' ).attr( 'action' );
+// $("selection-button").click(function(e) {
+//     e.preventDefault();
+//     $.ajax({
+//         type: "GET",
+//         url: url,
+//         data: { 
+//             id: $('#locations').val();, 
+//             },
+//         success: function(result) {
+//             alert('ok');
+//         },
+//         error: function(result) {
+//             alert('error');
+//         }
+//     });
+// });

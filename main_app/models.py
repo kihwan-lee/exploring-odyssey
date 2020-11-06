@@ -17,6 +17,27 @@ class City(models.Model):
     def __str__(self):
         return self.name
 
+# class Location(models.Model):
+#     region_id = models.IntegerField(default = '', null=True)
+#     region_name = models.CharField(max_length=100)
+#     location = models.IntegerField(default = '', null=True)
+#     location_desc = models.CharField(max_length=1000)
+#     english_proficiency = models.BooleanField(default = '', null=True)
+#     primary_lang = models.CharField(max_length=50)
+#     currency = models.CharField(max_length= 20)
+#     ideal_season = models.CharField(max_length=20)
+#     poi_1 = models.CharField(max_length = 500)
+#     poi_2 = models.CharField(max_length = 500)
+#     poi_3 = models.CharField(max_length = 500)
+#     url = models.URLField(max_length=250, blank= True)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     city = models.ForeignKey(City, on_delete=models.CASCADE, null = True)
+    
+#     class Meta:
+#         verbose_name_plural='locations'
+#         managed = False
+#         db_table = "location"
+
         
 class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -45,6 +66,7 @@ class Article(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     city = models.ForeignKey(City, on_delete=models.CASCADE)
+    # location = models.ForeignKey(Location, on_delete=models.CASCADE, null=True)
     
     class Meta:
         ordering = ['-created_on']

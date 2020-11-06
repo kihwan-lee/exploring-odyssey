@@ -9,18 +9,31 @@
   <div class="search-content row">
     <h3 class="search-header text-light text-uppercase">discover your next destination</h3>
     <h3 class="search-header text-light text-uppercase">and start your journey today</h3>
-    <div class="search-bar-container col-sm-12 col-md-12">
-      <div class="search-dropdown">
-        <form class="needs-validation" novalidate>
+        <div class="row w-50 justify-content-center">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <form class="city-search-form" novalidate>
+                <select id="locations" data-test="homepage-header-search-form-input" data-live-search="true" class="selectpicker form-control">
+                  <option value="" disabled selected>-- Search Your Destination --</option>
+                  <option>USA</option>
+                  {% comment %} 
+                  {% for location in locations %}
+                  <option value="{{ location.id }}"> {{location.location_name}}</option>
+                  {% endfor %}
+                  {% endcomment %}
+                </select>
+                <input type="button" id="search-button" class="btn-outline-info mt-2 btn-sm" value="Discover!">
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- <form class="needs-validation" novalidate>
           <select class="mdb-select validate md-form" searchable="Search here..">
             <option value="" disabled selected>-- Search Your Destination -- </option>
             <option value="1">USA</option>
-            <option value="2">Germany</option>
           </select>
           <button class="btn-outline-info btn-sm">Submit</button>
-        </form>
-      </div>
-    </div>
+        </form> -->
     <span class="scroll-indicator"><a class="text-light text-uppercase" href="#wrapper"><h5>SCROLL</h5></a></span>
     <span class="material-icons scroll-arrow">keyboard_arrow_down</span>
   </div>
