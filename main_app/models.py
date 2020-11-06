@@ -37,7 +37,6 @@ class Author(models.Model):
         return self.user.posts.all()
 
 
-
 class Article(models.Model):
     """An Article the user is writing."""
     title = models.CharField(max_length=200)

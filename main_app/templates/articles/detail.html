@@ -55,18 +55,40 @@
 		<div class="col-md-8 card mb-4  mt-3 ">
 			<div class="card-body">
 				<h3>{{ comments.count }} comments</h3>
+
+				{% for comment in comments %}
+        		<div class="comments" style="padding: 10px;">
+          			<p class="font-weight-bold">
+            			{{ comment.name }}
+            			<span class=" text-muted font-weight-normal">
+              				{{ comment.created_on }}
+            			</span>
+          			</p>
+          			{{ comment.body | linebreaks }}
+					<p>
+					  	<a href="{% url 'edit_comment' comment.id %}">Edit comment</a>
+					</p>
+					<p>
+						<form action="{% url 'delete_comment' comment.id %}" method="POST">
+							{% csrf_token %}
+    						<input type="hidden" value="{{ comment.id }}">
+    						<input type="submit" value="Delete comment">
+						</form>
+					</p>
+        		</div>
+       			 {% endfor %}
 			</div>
 		</div>	
 		<div class="col-md-8 card mb-4  mt-3 ">
 			<div class="card-body">	
-					{% load crispy_forms_tags %}
 					<h3>Leave a comment</h3>
+					{% load crispy_forms_tags %}
 					<form method="post" style="margin-top: 1.3em;">
 						{{ comment_form | crispy }}
 						{% csrf_token %}
 						<button type="submit" class="btn btn-primary  btn-lg">Submit</button>
 					</form>
-					{% comment %} {% endif %} {% endcomment %}
+				</div>
 			</div>
 		</div>
 	</div>
