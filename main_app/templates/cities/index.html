@@ -1,13 +1,71 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>City Index Page</h1>
+{% extends 'city-base.html' %}
+{% load static %}
 
-{% for city in cities %}
-<a href="{% url 'city_detail' city.id %}">
-  <div>
-    <span>{{ city.name }}</span>
+{% block content %}
+
+<div class="search jumbotron-fluid">
+  <div class="search-content row">
+    <h3 class="search-header text-light text-uppercase">discover your next destination</h3>
+    <h3 class="search-header text-light text-uppercase">and start your journey today</h3>
+        <div class="row w-50 justify-content-center">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <form class="city-search-form" novalidate>
+                <select id="locations" data-test="homepage-header-search-form-input" data-live-search="true" class="selectpicker form-control">
+                  <option value="" disabled selected>-- Search Your Destination --</option>
+                  <option>USA</option>
+                  {% comment %}
+                  {% for location in locations %}
+                  <option value="{{ location.id }}"> {{location.location_name}}</option>
+                  {% endfor %}
+                  {% endcomment %}
+                </select>
+                <input type="button" id="search-button" class="btn-outline-info mt-2 btn-sm" value="Discover!">
+              </form>
+            </div>
+          </div>
+        </div>
+    <span class="scroll-indicator"><a class="text-light text-uppercase" href="#wrapper"><h5>SCROLL</h5></a></span>
+    <span class="material-icons scroll-arrow">keyboard_arrow_down</span>
   </div>
-</a>
-{% endfor %}
+</div>
+
+<div class="city-wrapper wrapper" id="wrapper">
+  <div class="exploreGrid container-fluid">
+    <h1 class="search-span text-uppercase">Browse By Popular Destinations</h1>
+    <div class="cityRow row">
+      <div class="cityCard column">
+        <a href="{% url 'city_detail' city_id=7 %}">
+          <img alt="australia" src="{% static 'images/cities/australia.jpg' %}">
+          <h3 class="cityCardName text-uppercase">australia</h3>
+        </a>
+        <a href="{% url 'city_detail' city_id=4 %}">
+          <img alt="greece" src="{% static 'images/cities/greece.jpg' %}">
+          <h3 class="cityCardName text-uppercase">greece</h3>
+        </a>
+      </div>
+      <div class="cityCard column">
+        <a href="{% url 'city_detail' city_id=2 %}">
+          <img alt="japan" src="{% static 'images/japan.jpg' %}">
+          <h3 class="cityCardName text-uppercase">japan</h3>
+        </a>
+        <a href="{% url 'city_detail' city_id=5 %}">
+          <img alt="morocco" src="{% static 'images/cities/morocco.jpg' %}">
+          <h3 class="cityCardName text-uppercase">morocco</h3>
+        </a>
+      </div>
+      <div class="cityCard column">
+        <a href="{% url 'city_detail' city_id=3 %}">
+          <img alt="indonesia" src="{% static 'images/bali.jpeg' %}">
+          <h3 class="cityCardName text-uppercase">indonesia</h3>
+        </a>
+        <a href="{% url 'city_detail' city_id=6 %}">
+          <img alt="iceland" src="{% static 'images/cities/iceland.jpg' %}">
+          <h3 class="cityCardName text-uppercase">iceland</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %} 

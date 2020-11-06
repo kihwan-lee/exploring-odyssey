@@ -1,10 +1,58 @@
-{% extends base.html %}
-
-
+{% extends 'base.html' %}
 {% block content %}
 
-<h1>This is the Signup</h1>
+<div class="row pt-5 mt-5 justify-content-center">
+  <div class="card registration-card text-center">
+    <h3 class="card-body register-header">Sign up to access articles written by users and browse over 50+ destinations around the world!</h3>
+  </div>
+</div>
 
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-lg-6 registration-column text-center">
+      <div class="card registration-card">
+      <h3 class="card-title register-header">Register Your Account</h3>
+      <form method="POST" action="{% url 'signup' %}" class="registration-form mt-4">
+        {% csrf_token %}
+        <div class="input-group mb-4">
+          <input type="text" placeholder="USERNAME" name="username" required> 
+        </div>
+        <div class="input-group mb-4">
+          <input type="password" placeholder="PASSWORD" name="password1" required>
+        </div>
+        <div class="input-group mb-4">
+          <input type="password" placeholder="PASSWORD" name="password2" required>
+        </div>
+          {% if error_message %}
+            <p>{{ error_message }}</p>
+          {% endif %}
+          <div class="d-flex justify-content-center mt-3 login_container">
+            <input class="btn btn-dark" type="submit" value="SIGNUP">
+            <input type="hidden" name="next" value="">
+          </div>
+        </form>
+      </div>
+    </div>
+      <div class="col-lg-6 text-center">
+        <div class="card signup-info">
+          <h4 class="card-title register-info-header">Instructions</h4>
+          <span class="info-span my-1">Username</span>
+          <ul class="signup-ol">
+          <li>Username must be fewer than 150 characters.</li>
+        </ul>
+        <span class="info-span my-1">Password</span>
+        <ul class="signup-ol">
+          <li>At least 8 characters</li>
+          <li>Avoid using passwords related to personal info.</li>
+          <li>Avoid using common passwords.</li>
+          <li>Entirely numeric passwords cannot be accepted.</li>
+        </ul>
+        <ul class="signup-ol">
+          <li>Both passwords must match to be verified.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 
 {% endblock content %}

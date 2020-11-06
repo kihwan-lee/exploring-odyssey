@@ -1,0 +1,93 @@
+Categorized by regions
+
+INSERT INTO location VALUES (region_id, region_name, location_name, location_description, language, currency, ideal_season)
+INSERT INTO location_poi VALUES (region_id, location_name, experiences)
+
+
+Africa
+Botswana
+Egypt
+Kenya
+Mauritius
+Morocco
+Mozambique
+Namibia
+The Seychelles
+South Africa
+Tanzania
+Zambia
+Zimbabwe
+
+Asia
+Cambodia
+China
+Hong Kong
+Indonesia
+Japan
+The Maldives
+Singapore
+Sri Lanka
+Thailand
+Vietnam
+
+The Caribbean
+Aruba
+The Bahamas
+British Virgin Islands
+Cuba
+The Dominican Republic
+
+
+Central America
+Panama
+Honduras
+Guatemala
+Costa Rica
+Belize
+
+Europe
+Austria
+Belgium
+Croatia
+Czech Republic
+Denmark
+England
+France
+Germany
+Greece
+Hungary
+Iceland
+Ireland
+Italy
+Malta
+The Netherlands
+Poland
+Portugal
+Scotland
+Slovakia
+Spain
+Sweden
+Switzerland
+
+The Middle East
+Egypt
+Jordan 
+Turkey
+United Arab Emirates
+
+North America
+Canada
+Mexico
+Puerto Rico
+Usa
+Oceania
+Australia
+French Polynesia
+New Zealand
+
+South America
+Bolivia
+Brazil
+Colombia
+Ecuador
+Peru
