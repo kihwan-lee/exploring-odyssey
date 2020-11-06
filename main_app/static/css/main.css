@@ -204,6 +204,12 @@ textarea {
     width: 650px !important;
 }
 
+.carousel-item {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
 /*********************/
 /* Media Breakpoints */
 /*********************/
