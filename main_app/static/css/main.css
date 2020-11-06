@@ -211,6 +211,41 @@ textarea {
 }
 
 /*********************/
+/*   Article Detail  */
+/*********************/
+.article-detail-container {
+    background-color: #DBEADD;
+    padding: 0 0 !important;
+}
+
+.article-detail-page {
+    padding: 0 0 !important;
+}
+
+.article-detail-row  {
+    margin: 0 0 !important;
+}
+
+.underline {
+    text-decoration-color: aquamarine;
+}
+
+.btn-outline-info {
+    color: #558071 !important;
+    border-color: #7FFED4;
+}
+
+.btn-outline-info:hover {
+    color: #fff !important;
+    background-color: #7FFED4 !important;
+    border-color: #7FFED4 !important;
+}
+
+.btn-container {
+    float: right;
+}
+
+/*********************/
 /* Media Breakpoints */
 /*********************/
 @media (min-width: 576px) {

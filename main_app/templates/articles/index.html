@@ -37,18 +37,18 @@
 	<h1 class="search-span text-uppercase">Recent Articles</h1>
 	<div class="carousel slide">
 		<div class="carousel-inner" role="listbox">
-		{% for article in articles %}
-			<div class="carousel-item">
-				<div class="row">
+			{% comment %} <div class="carousel-item">
+				<div class="row"> {% endcomment %}
+				{% for article in articles %}
 					<a href="{% url 'article_detail' article.id %}">
 						<h4>{{ article.title }}</h4>
 					</a>
+					{% empty %}
+						<h4>No articles have been added yet.</h4>	
 				</div>
 			</div>
-		{% endfor %}
+				{% endfor %}
 		</div>
-		{% empty %}
-			<p>No articles have been added yet.</p>	
 	</div>
 </div>
 
