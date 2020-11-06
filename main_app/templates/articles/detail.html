@@ -6,23 +6,23 @@
 	<br>
 	<a href="{% url 'authors_index' %}"><h3> ← back</h3></a>
 
-	<div class="article-detail-container container-fluid mt-2 pt-5">
+<div class="article-detail-container container-fluid mt-2 pt-5">
 		<div class="article-detail-row pt-5 row justify-content-center">
 			<h1 class="article-header mb-5 text-uppercase">An article about <u class="underline">{{ article.city }}</u></h1>
 		</div>	
-		<div class="article-detail-row row pb-5">
+	<div class="article-detail-row row pb-5">
 			<div class="art-detail-author col-xl-4 text-center">
 				<!-- <h2>Profile Pic will go here</h2> -->
 				<h2>Article by <u class="underline">{{ article.author }}</u></h2>
 				<h6>created on {{ article.created_on }}</h6>
 			</div>
-			<div class="art-detail-content col-xl-8">
+		<div class="art-detail-content col-xl-8">
 				<span>
 					<h2>{{ article.title }}</h2>
 					<p>Article Content: {{ article.content }}</p>
 				</span>
 				{% if article.author.id == request.user.id %}
-				<div class="btn-container mr-5">
+			<div class="btn-container mr-5">
 				<button type="button" class="btn btn-outline-danger mr-3" data-toggle="modal" data-target="#editArticleModal">
 					DELETE
 					</button>
@@ -47,62 +47,31 @@
 				</div>
 				<a href="{% url 'edit_article' article.id %}" class="btn btn-outline-info text-uppercase">EDIT</a>
 				{% endif %}
-				</div>
-		</div>
-			<div class="card-body">
-				{% load crispy_forms_tags %}
-				{% comment %} {% if new_comment %}
-				<div class="alert alert-success" role="alert">
-					Your comment is awaiting moderation
-				</div>
-				{% else %} {% endcomment %}
-				<h3>Leave a comment</h3>
-				<form method="post" style="margin-top: 1.3em;">
-					{{ comment_form | crispy }}
-					{% csrf_token %}
-					<button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-				</form>
-				{% comment %} {% endif %} {% endcomment %}
-			</div>
-		</div>
-	</div>
-	<div class="container-fluid mt-5 pt-5">
-		<div class="row justify-content-center">
-			<div class="col-md-8 card mb-4  mt-3 ">
-				<div class="card-body">
-					<!-- comments -->
-					<h3>{{ comments.count }} comments</h3>
-
-					{% for comment in comments %}
-						<div class="comments" style="padding: 10px;">
-							<p class="font-weight-bold">
-								{{ comment.name }}
-							<span class=" text-muted font-weight-normal">
-								{{ comment.created_on }}
-							</span>
-						</p>
-						{{ comment.body | linebreaks }}
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-			<div class="col-md-8 card mb-4  mt-3 ">
-				<div class="card-body">
-					{% comment %} {% if new_comment %}
-					<div class="alert alert-success" role="alert">
-						Your comment is awaiting moderation
-					</div>
-					{% else %} {% endcomment %}
-					<h3>Leave a comment</h3>
-					<form method="post" style="margin-top: 1.3em;">
-						{{ comment_form.as_p }}
-						{% csrf_token %}
-						<button type="submit" class="btn btn-primary  btn-lg">Submit</button>
-					</form>
-					{% comment %} {% endif %} {% endcomment %}
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<div class="container-fluid mt-5 pt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8 card mb-4  mt-3 ">
+			<div class="card-body">
+				<h3>{{ comments.count }} comments</h3>
+			</div>
+		</div>	
+		<div class="col-md-8 card mb-4  mt-3 ">
+			<div class="card-body">	
+					{% load crispy_forms_tags %}
+					<h3>Leave a comment</h3>
+					<form method="post" style="margin-top: 1.3em;">
+						{{ comment_form | crispy }}
+						{% csrf_token %}
+						<button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+					</form>
+					{% comment %} {% endif %} {% endcomment %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
 {% endblock %}
