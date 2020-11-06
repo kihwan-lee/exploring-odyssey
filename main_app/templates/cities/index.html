@@ -3,8 +3,6 @@
 
 {% block content %}
 
-<!-- <h1>City Index Page</h1> -->
-
 <div class="search jumbotron-fluid">
   <div class="search-content row">
     <h3 class="search-header text-light text-uppercase">discover your next destination</h3>
@@ -16,7 +14,7 @@
                 <select id="locations" data-test="homepage-header-search-form-input" data-live-search="true" class="selectpicker form-control">
                   <option value="" disabled selected>-- Search Your Destination --</option>
                   <option>USA</option>
-                  {% comment %} 
+                  {% comment %}
                   {% for location in locations %}
                   <option value="{{ location.id }}"> {{location.location_name}}</option>
                   {% endfor %}
@@ -27,13 +25,6 @@
             </div>
           </div>
         </div>
-        <!-- <form class="needs-validation" novalidate>
-          <select class="mdb-select validate md-form" searchable="Search here..">
-            <option value="" disabled selected>-- Search Your Destination -- </option>
-            <option value="1">USA</option>
-          </select>
-          <button class="btn-outline-info btn-sm">Submit</button>
-        </form> -->
     <span class="scroll-indicator"><a class="text-light text-uppercase" href="#wrapper"><h5>SCROLL</h5></a></span>
     <span class="material-icons scroll-arrow">keyboard_arrow_down</span>
   </div>
