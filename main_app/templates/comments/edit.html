@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+	<p>Edit comment:</p>
+
+	<form action="{% url 'edit_comment' comment.id %}" method="POST">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit" class="btn btn-primary  btn-lg">Save changes</button>
+	</form>
+
+{% endblock %} 

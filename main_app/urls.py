@@ -26,6 +26,12 @@ urlpatterns = [
     path('authors/<int:user_id>/edit/', views.author_edit, name='author_edit'),
     # path('authors/<int:user_id>', views.author_detail, name='author_detail'),
 
+    # Comments Routes
+    # Page for editing a comment
+    path('comments/<int:comment_id>/edit/', views.edit_comment, name='edit_comment'),
+    path('comments/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
+
+    
     #Auth
     path('registration/signup/', views.signup, name='signup'),
 

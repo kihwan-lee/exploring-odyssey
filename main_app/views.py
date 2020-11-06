@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
-from .models import City, Author, Article
+from .models import City, Author, Article, Comment
 from main_app.forms import Article_Form, Profile_Form, Comment_Form
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -191,4 +191,35 @@ def delete_article(request, article_id):
 
         return redirect('cities_index')
 
+
+#-----------------------------------------------------------------------------#
+#                                C O M M E N T S                              #
+#-----------------------------------------------------------------------------#
+
+def edit_comment(request, comment_id):
+    """Edit an existing comment."""
+    comment = Comment.objects.get(id=comment_id)
+    article = comment.article
+
+    if request.method != 'POST':
+        # Initial request; pre-fill form with current comment.
+        form = Comment_Form(instance=comment)
+    else:
+        # POST data submitted; process data.
+        form = Comment_Form(instance=comment, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('article_detail', article_id=article.id)
+
+    context = {'comment': comment, 'article': article, 'form': form}
+    return render(request, 'comments/edit.html', context)
+
+def delete_comment(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+    article = comment.article
+
+    if request.method == 'POST':
+        Comment.objects.get(id=comment_id).delete()
+
+        return redirect('article_detail', article_id=article.id)
 
