@@ -27,7 +27,7 @@
 		</div>	
 	<div class="article-detail-row row pb-5">
 			<div class="art-detail-author col-xl-4 text-center">
-          <h2>Recent Articles <u class="underline"></h2>
+          <h2><u class="underline">Recent Articles</u></h2>
             <ul class="good-bye-padding">
           {% for article in city.article_set.all %}
             <li class="article-lists"><a id="article-hover" href="{% url 'article_detail' article.id %}">{{ article.title }}</a></u></li>
@@ -35,17 +35,24 @@
           </ul>
       </div>
         <div class="art-detail-author col-xl-4 text-center">
-          <h2>Author:</h2>
+          <h2><u class="underline">Author:</u></h2>
+          <ul class="good-bye-padding">
             {% for article in city.article_set.all %}
-            <li class="article-lists"><u class="underline"><h4>{{ article.author }}</h4></u></li>
+            <li class="article-lists"><h4>{{ article.author }}</h4></li>
             {% endfor %}
+          </ul>
         </div>
         <div class="art-detail-author col-xl-4 text-center">
           <h2>Created on: </h2>
+          <ul class="good-bye-padding">
             {% for article in city.article_set.all %}
             <li class="article-lists"><u class="underline"><h4>{{ article.created_on }}</h4></u></li>
             {% endfor %}
-    </div>
+          </ul>
+        </div>
+        <div class="art-detail-author col-xl-12 text-center">
+          <input type="button" class="add-post-btn mt-5 rounded bg-transparent btn-outline-info w-25 text-light" href="{% url 'article_add' city.id %}" value="ADD NEW ARTICLE">
+        </div>
   </div>
 </div>
       
