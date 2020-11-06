@@ -29,7 +29,11 @@
           <h2>Profile</h2>
         </div>
         <div class="card-top">
-          Author Pic: <img src="{{ request.user.author.profile_image.url }}" >
+          Author Pic: {% if request.user.author.imageURL.url != NULL %}
+          <img src="{{ request.user.author.imageURL.url }}" class="img-fluid">
+          {% else %}
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png">
+            {% endif %}
         </div>
         <div class="card-body">
           <div>
