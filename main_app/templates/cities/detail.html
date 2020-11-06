@@ -3,21 +3,21 @@
 
 {% block content %}
 
-<a href="{% url 'authors_index' %}"><h3 class="text-light back-btn"> ← back</h3></a>
+<a href="{% url 'authors_index' %}"><h3 class="mt-4 text-dark back-btn"> ← back</h3></a>
 
 <div class="search jumbotron-fluid">
-  {% if city.name == 'Chicago' %} 
+  {% if city.name == 'Australia' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?sydney">
-  {% comment %} {% if city.name = 'Japan' %} 
+  {% elif city.name == 'Japan' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?japan">
-  {% if city.name = 'Indonesia' %} 
+  {% elif city.name == 'Indonesia' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?indonesia">
-  {% if city.name = 'Greece' %} 
+  {% elif city.name == 'Greece' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?greece">
-  {% if city.name = 'Morocco' %} 
+  {% elif city.name == 'Morocco' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?morocco">
-  {% if city.name = 'Iceland' %} 
-  <img class="article-detail-img" src="https://source.unsplash.com/random/?iceland">{% endcomment %} 
+  {% elif city.name == 'Iceland' %} 
+  <img class="article-detail-img" src="https://source.unsplash.com/random/?iceland">
   {% endif %}
 </div>
 
@@ -27,7 +27,7 @@
 		</div>	
 	<div class="article-detail-row row pb-5">
 			<div class="art-detail-author col-xl-4 text-center">
-          <h2>Recent Articles <u class="underline"></h2>
+          <h2><u class="underline">Recent Articles</u></h2>
             <ul class="good-bye-padding">
           {% for article in city.article_set.all %}
             <li class="article-lists"><a id="article-hover" href="{% url 'article_detail' article.id %}">{{ article.title }}</a></u></li>
@@ -35,17 +35,26 @@
           </ul>
       </div>
         <div class="art-detail-author col-xl-4 text-center">
-          <h2>Author:</h2>
+          <h2><u class="underline">Author:</u></h2>
+          <ul class="good-bye-padding">
             {% for article in city.article_set.all %}
-            <li class="article-lists"><u class="underline"><h4>{{ article.author }}</h4></u></li>
+            <li class="article-lists"><h4>{{ article.author }}</h4></li>
             {% endfor %}
+          </ul>
         </div>
         <div class="art-detail-author col-xl-4 text-center">
           <h2>Created on: </h2>
+          <ul class="good-bye-padding">
             {% for article in city.article_set.all %}
             <li class="article-lists"><u class="underline"><h4>{{ article.created_on }}</h4></u></li>
             {% endfor %}
-    </div>
+          </ul>
+        </div>
+        <div class="art-detail-author col-xl-12 text-center">
+          <form action="{% url 'article_add' city.id %}">
+            <input class="add-post-btn mt-5 rounded bg-transparent btn-outline-info h-50 text-light" type="submit" value="ADD NEW ARTICLE" />
+          </form>
+        </div>
   </div>
 </div>
       

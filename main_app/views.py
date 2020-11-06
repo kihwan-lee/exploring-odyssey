@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
-import psycopg2
+# import psycopg2 this will help us connect to our location DB
 
 
 #-----------------------------------------------------------------------------#
@@ -109,10 +109,6 @@ def author_edit(request, user_id):
 
         return render(request, 'authors/edit.html', context)
 
-#@login_required
-#def edit_author(request, user_id):
-    #if request.method == 'POST' :
-    #add edit to profile functionality
         
 #-----------------------------------------------------------------------------#
 #                                A R T I C L E S                              #
