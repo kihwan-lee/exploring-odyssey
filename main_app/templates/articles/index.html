@@ -34,19 +34,6 @@
 	</div>
 </div>
 
-<<<<<<< HEAD
-
-<div class="recentArticles container-fluid">
-	<h1 class="search-span text-uppercase">Recent Articles</h1>
-	<div class="carousel slide">
-		<div class="carousel-inner" role="listbox">
-				{% for article in articles %}
-					<a href="{% url 'article_detail' article.id %}">
-						<h4>{{ article.title }}</h4>
-					</a>
-					{% empty %}
-						<h4>No articles have been added yet.</h4>	
-=======
 <!-- Featured Slides -->
 <div class="featuredArticles container-fluid mt-5 px-4 my-4">
 	<h1 class="search-span text-center mb-5 text-uppercase">Featured Articles</h1>
@@ -68,7 +55,6 @@
 				</div>
 				<div class="feature-1 card-img">
 					<img class="featured-image" src="https://source.unsplash.com/random/?travel" alt="">
->>>>>>> submaster
 				</div>
 			</div>
 		</div>
