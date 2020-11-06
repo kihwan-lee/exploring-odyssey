@@ -8,7 +8,7 @@
 <div class="search jumbotron-fluid">
   {% if city.name == 'Chicago' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?sydney">
-  {% if city.name = 'Japan' %} 
+  {% comment %} {% if city.name = 'Japan' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?japan">
   {% if city.name = 'Indonesia' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?indonesia">
@@ -17,7 +17,7 @@
   {% if city.name = 'Morocco' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?morocco">
   {% if city.name = 'Iceland' %} 
-  <img class="article-detail-img" src="https://source.unsplash.com/random/?iceland">
+  <img class="article-detail-img" src="https://source.unsplash.com/random/?iceland">{% endcomment %} 
   {% endif %}
 </div>
 
@@ -37,13 +37,13 @@
         <div class="art-detail-author col-xl-4 text-center">
           <h2>Author:</h2>
             {% for article in city.article_set.all %}
-            <li class="article-lists my-3"><u class="underline"><h4>{{ article.author }}</h4></u></li>
+            <li class="article-lists"><u class="underline"><h4>{{ article.author }}</h4></u></li>
             {% endfor %}
         </div>
         <div class="art-detail-author col-xl-4 text-center">
           <h2>Created on: </h2>
             {% for article in city.article_set.all %}
-            <li class="article-lists my-3"><u class="underline"><h4>{{ article.created_on }}</h4></u></li>
+            <li class="article-lists"><u class="underline"><h4>{{ article.created_on }}</h4></u></li>
             {% endfor %}
     </div>
   </div>

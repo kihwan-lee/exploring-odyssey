@@ -231,7 +231,12 @@ label {
     left: 20%;
     width: 60%;
     height: 70% !important;
-    background-color: rgba(255,255,255,.4) !important;
+    background-color: rgba(255,255,255,0.9) !important;
+}
+
+.profile-carousel-img {
+    object-fit: cover;
+    object-position: center;
 }
 
 .article-list-header {
