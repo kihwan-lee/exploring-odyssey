@@ -187,6 +187,78 @@ label {
     padding-inline-start: 0 !important;
 }
 
+
+/*********************/
+/*  Acc Detail  Page */
+/*********************/
+.author-container {
+    background-color: #DBEADD;
+}
+
+.profile-pic-header {
+    width: 200px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: thin;
+}
+
+.profile-pic {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #000;
+}
+
+.edit-details {
+    text-transform: lowercase;
+    font-size: 1rem;
+}
+
+.article-section {
+    background-color: #fff;
+}
+
+.article-list {
+    flex-direction: column;
+    align-self: center;
+}
+.article-list-card {
+    position: absolute;
+    z-index: 2;
+    top: 15%;
+    left: 20%;
+    width: 60%;
+    height: 70% !important;
+    background-color: rgba(255,255,255,.4) !important;
+}
+
+.article-list-header {
+    text-decoration: underline;
+}
+
+#tab-id:active, #tab-id:focus {
+    text-decoration: underline;
+    text-decoration-color: #000;
+}
+
+.inner-header {
+    position: absolute;
+    color: #FFF;
+    font-family: 'Lato', sans-serif !important;
+    top: 5%;
+    left: 35%;
+    /* margin-right: auto; */
+    z-index: 2;
+    /* margin-left: auto; */
+    text-transform: uppercase;
+}
+
+.author-edit-form {
+    display: contents;
+}
+
 /*********************/
 /*   Article Index   */
 /*********************/
@@ -209,6 +281,14 @@ textarea {
     background-size: cover;
     background-position-y: center;
 }
+
+.featured-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+}
+
 
 /*********************/
 /*   Article Detail  */
