@@ -33,25 +33,57 @@
 	  </div>
 	</div>
 </div>
-<div class="recentArticles container-fluid">
-	<h1 class="search-span text-uppercase">Recent Articles</h1>
-	<div class="carousel slide">
-		<div class="carousel-inner" role="listbox">
-			{% comment %} <div class="carousel-item">
-				<div class="row"> {% endcomment %}
-				{% for article in articles %}
-					<a href="{% url 'article_detail' article.id %}">
-						<h4>{{ article.title }}</h4>
-					</a>
-					{% empty %}
-						<h4>No articles have been added yet.</h4>	
+
+<!-- Featured Slides -->
+<div class="featuredArticles container-fluid mt-5 px-4 my-4">
+	<h1 class="search-span text-center mb-5 text-uppercase">Featured Articles</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-title mb-0 pt-2 bg-dark text-center text-light">
+					<h2>A Perfect Getaway in Greece</h2>
+				</div>
+				<div class="feature-1 card-img">
+					<img class="featured-image" src="https://source.unsplash.com/random/?santorini" alt="">
 				</div>
 			</div>
-				{% endfor %}
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-title mb-0 pt-2 bg-dark text-center text-light">
+					<h2>10 Best Places to Travel Solo</h2>
+				</div>
+				<div class="feature-1 card-img">
+					<img class="featured-image" src="https://source.unsplash.com/random/?travel" alt="">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
+<div class="featuredArticles container-fluid mt-5 px-4 my-4">
+	<h1 class="search-span text-center mb-5 text-uppercase">Featured Articles</h1>
+		<div class="row">
+			{% for article in articles %}
+			<div class="col col-lg-3">
+				<div class="card">
+					<div class="card-title mb-0 pt-2 bg-light text-center text-dark">
+						<a href="{% url 'article_detail' article.id %}">
+						<h2>{{ article.title }}</h2></a>
+						{% if empty %}
+						<h4>No articles have been added yet.</h4>
+						{% endif %}
+					</div>
+					<div class="feature-1 card-img">
+						<a href="{% url 'article_detail' article.id %}">
+							<img class="featured-image" src="https://source.unsplash.com/random/?adventure" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+</div>
 
 
 
