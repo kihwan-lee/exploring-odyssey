@@ -44,31 +44,31 @@
     <h1 class="search-span text-uppercase">Browse By Popular Destinations</h1>
     <div class="cityRow row">
       <div class="cityCard column">
-        <a href="#">
+        <a href="{% url 'city_detail' city_id=7 %}">
           <img alt="australia" src="{% static 'images/cities/australia.jpg' %}">
           <h3 class="cityCardName text-uppercase">australia</h3>
         </a>
-        <a href="#">
+        <a href="{% url 'city_detail' city_id=4 %}">
           <img alt="greece" src="{% static 'images/cities/greece.jpg' %}">
           <h3 class="cityCardName text-uppercase">greece</h3>
         </a>
       </div>
       <div class="cityCard column">
-        <a href="#">
+        <a href="{% url 'city_detail' city_id=2 %}">
           <img alt="japan" src="{% static 'images/japan.jpg' %}">
           <h3 class="cityCardName text-uppercase">japan</h3>
         </a>
-        <a href="#">
+        <a href="{% url 'city_detail' city_id=5 %}">
           <img alt="morocco" src="{% static 'images/cities/morocco.jpg' %}">
           <h3 class="cityCardName text-uppercase">morocco</h3>
         </a>
       </div>
       <div class="cityCard column">
-        <a href="#">
+        <a href="{% url 'city_detail' city_id=3 %}">
           <img alt="indonesia" src="{% static 'images/bali.jpeg' %}">
           <h3 class="cityCardName text-uppercase">indonesia</h3>
         </a>
-        <a href="#">
+        <a href="{% url 'city_detail' city_id=6 %}">
           <img alt="iceland" src="{% static 'images/cities/iceland.jpg' %}">
           <h3 class="cityCardName text-uppercase">iceland</h3>
         </a>
