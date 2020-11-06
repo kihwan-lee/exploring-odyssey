@@ -6,18 +6,18 @@
 <a href="{% url 'authors_index' %}"><h3 class="mt-4 text-dark back-btn"> ← back</h3></a>
 
 <div class="search jumbotron-fluid">
-  {% if city.name == 'Chicago' %} 
+  {% if city.name == 'Australia' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?sydney">
-  {% comment %} {% if city.name = 'Japan' %} 
+  {% elif city.name == 'Japan' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?japan">
-  {% if city.name = 'Indonesia' %} 
+  {% elif city.name == 'Indonesia' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?indonesia">
-  {% if city.name = 'Greece' %} 
+  {% elif city.name == 'Greece' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?greece">
-  {% if city.name = 'Morocco' %} 
+  {% elif city.name == 'Morocco' %} 
   <img class="article-detail-img" src="https://source.unsplash.com/random/?morocco">
-  {% if city.name = 'Iceland' %} 
-  <img class="article-detail-img" src="https://source.unsplash.com/random/?iceland">{% endcomment %} 
+  {% elif city.name == 'Iceland' %} 
+  <img class="article-detail-img" src="https://source.unsplash.com/random/?iceland">
   {% endif %}
 </div>
 
