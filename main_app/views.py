@@ -222,4 +222,3 @@ def delete_comment(request, comment_id):
         Comment.objects.get(id=comment_id).delete()
 
         return redirect('article_detail', article_id=article.id)
-
