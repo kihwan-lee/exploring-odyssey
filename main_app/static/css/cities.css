@@ -152,6 +152,19 @@ label {
     justify-content: center;
 }
 
+.btn-outline-info {
+    color: #fff !important;
+    border-color: transparent;
+    background-color: #6faa96 !important;
+    border: none !important;
+}
+
+.btn-outline-info:hover {
+    color: #fff !important;
+    background-color: #7FFED4 !important;
+    border-color: #7FFED4 !important;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 10%;

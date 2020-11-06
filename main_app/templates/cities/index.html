@@ -1,10 +1,6 @@
 {% extends 'city-base.html' %}
 {% load static %}
 
-<!-- {% block title %}
-All Cities
-{% endblock %} -->
-
 {% block content %}
 
 <!-- <h1>City Index Page</h1> -->
@@ -14,11 +10,15 @@ All Cities
     <h3 class="search-header text-light text-uppercase">discover your next destination</h3>
     <h3 class="search-header text-light text-uppercase">and start your journey today</h3>
     <div class="search-bar-container col-sm-12 col-md-12">
-      <div class="input-group w-25 mb-3">
-        <select class="mdb-select md-form colorful-select dropdown-info">
-          <option value="1">-- Choose City --</option>
-        </select>
-        <label class="mdb-main-label">Blue select</label>
+      <div class="search-dropdown">
+        <form class="needs-validation" novalidate>
+          <select class="mdb-select validate md-form" searchable="Search here..">
+            <option value="" disabled selected>-- Search Your Destination -- </option>
+            <option value="1">USA</option>
+            <option value="2">Germany</option>
+          </select>
+          <button class="btn-outline-info btn-sm">Submit</button>
+        </form>
       </div>
     </div>
     <span class="scroll-indicator"><a class="text-light text-uppercase" href="#wrapper"><h5>SCROLL</h5></a></span>
