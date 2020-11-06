@@ -32,18 +32,18 @@ Project Wayfarer user can use this app to track cities, articles, and comments, 
 ## Wireframes
 ### Landing
 Users will see input to log in or create account
-![image](https://jblalock.box.com/s/4eoyer8dyls44t2wa4hb5hehwgld6l0g)
+![image](public/images/log_in.png)
 ### Registration
 Users who need to create will be guided to registration page
-![image](https://jblalock.box.com/s/lp1m54cv37k0la2lcemxf0hhhhmyus3l)
+![image](public/images/registration.png)
 ### Home Page
 Build out city database/log individual articles, title, data, submit to memory.
 This will allow user to input Article and comment data to database, as well as have access to edit past Articles and comments.  These articles will be visible with hyperlinks to view article and comment details
-![image](https://jblalock.box.com/s/c4k52aghc7ifm6wg95py3rn8jplcnakx)
+![image](public/images/landing.png)
 ### Show Article Page
 Details each article by: (name, date/time, comments)
 View 1
-![image](https://jblalock.box.com/s/fvul29w81izhavt8p8629me9o3a8jag8)
+![image](public/images/article_view.png)
 ## Data Models
 ### User
 - userId
