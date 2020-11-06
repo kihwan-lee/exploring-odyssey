@@ -43,11 +43,11 @@
 					<a href="{% url 'article_detail' article.id %}">
 						<h4>{{ article.title }}</h4>
 					</a>
-				{% empty %}
-					<p>No articles have been added yet.</p>	
+					{% empty %}
+						<h4>No articles have been added yet.</h4>	
+				</div>
+			</div>
 				{% endfor %}
-				{% comment %} </div>
-			</div> {% endcomment %}
 		</div>
 	</div>
 </div>
