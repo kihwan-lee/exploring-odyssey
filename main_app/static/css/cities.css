@@ -231,3 +231,12 @@ label {
     margin-top: -80px;
     padding: 30px;
 }
+
+.good-bye-padding {
+    padding-inline-start: 0 !important;
+}
+
+li.article-lists {
+    list-style: none !important;
+    padding-left: 0;
+}
