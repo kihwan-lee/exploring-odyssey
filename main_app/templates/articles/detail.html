@@ -15,10 +15,51 @@
 		<div class="col-xl-8">
 			<span>
 				<h1>{{ article.title }}</h1>
+<<<<<<< HEAD
 				<p>{{ article.content }}</p>
 				<span class="created_on_span">{{ article.created_on }}</span>
 			  </span>
 			  <div class="article-btn-container pt-3">
+=======
+				<p>Article Content: {{ article.content }}</p>
+				<p>Article Created On: {{ article.created_on }}</p>
+			</span>
+
+    	<div class="col-md-8 card mb-4  mt-3 ">
+      		<div class="card-body">
+        		<!-- comments -->
+        		<h2>{{ comments.count }} comments</h2>
+
+				{% for comment in comments %}
+        			<div class="comments" style="padding: 10px;">
+          				<p class="font-weight-bold">
+            				{{ comment.name }}
+            			<span class=" text-muted font-weight-normal">
+              				{{ comment.created_on }}
+            			</span>
+          			</p>
+          			{{ comment.body | linebreaks }}
+        		</div>
+        		{% endfor %}
+			</div>
+		</div>
+			<div class="card-body">
+				{% comment %} {% if new_comment %}
+				<div class="alert alert-success" role="alert">
+					Your comment is awaiting moderation
+				</div>
+				{% else %} {% endcomment %}
+				<h3>Leave a comment</h3>
+				<form method="post" style="margin-top: 1.3em;">
+					{{ comment_form.as_p }}
+					{% csrf_token %}
+					<button type="submit" class="btn btn-primary  btn-lg">Submit</button>
+				</form>
+				{% comment %} {% endif %} {% endcomment %}
+			</div>
+		
+
+>>>>>>> submaster
 			  {% if article.author.id == request.user.id %}
 			  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#editArticleModal">
 				  DELETE

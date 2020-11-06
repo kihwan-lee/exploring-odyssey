@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Author, Article
+from .models import Author, Article, Comment
 
 class Profile_Form(ModelForm):
     class Meta:
@@ -11,4 +11,9 @@ class Article_Form(ModelForm):
         model = Article
         fields = ['title', 'content']
         # removed 'city' from form
+
+class Comment_Form(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
 
