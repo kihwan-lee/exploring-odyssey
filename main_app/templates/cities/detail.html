@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<a href="{% url 'authors_index' %}"><h3 class="text-light back-btn"> ← back</h3></a>
+<a href="{% url 'authors_index' %}"><h3 class="mt-4 text-dark back-btn"> ← back</h3></a>
 
 <div class="search jumbotron-fluid">
   {% if city.name == 'Chicago' %} 
@@ -51,7 +51,9 @@
           </ul>
         </div>
         <div class="art-detail-author col-xl-12 text-center">
-          <input type="button" class="add-post-btn mt-5 rounded bg-transparent btn-outline-info w-25 text-light" href="{% url 'article_add' city.id %}" value="ADD NEW ARTICLE">
+          <form action="{% url 'article_add' city.id %}">
+            <input class="add-post-btn mt-5 rounded bg-transparent btn-outline-info h-50 text-light" type="submit" value="ADD NEW ARTICLE" />
+          </form>
         </div>
   </div>
 </div>

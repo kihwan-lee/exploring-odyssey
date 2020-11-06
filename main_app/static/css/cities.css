@@ -241,6 +241,6 @@ li.article-lists {
     padding-left: 0;
 }
 
-.add-post-btn {
-    
+.small-a {
+    font-size: 1rem !important;
 }
