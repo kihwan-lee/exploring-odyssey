@@ -96,7 +96,7 @@ def author_edit(request, user_id):
     error_message=''
     # authors = Author.objects.get(id=user_id)
     if request.method == 'POST':
-        author_form = Profile_Form(request.POST, instance = request.user.author)
+        author_form = Profile_Form(request.POST, request.FILES, instance = request.user.author)
         if author_form.is_valid():
             author_form.save()
             return redirect('authors_index')

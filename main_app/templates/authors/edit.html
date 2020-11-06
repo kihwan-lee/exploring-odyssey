@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<form action="{% url 'author_edit' user.id %}" method="POST">
+<form action="{% url 'author_edit' user.id %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% for field in author_form %}
     {{ field }}
