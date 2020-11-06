@@ -15,9 +15,10 @@
 		<div class="col-xl-8">
 			<span>
 				<h1>{{ article.title }}</h1>
-				<p>Article Content: {{ article.content }}</p>
-				<p>Article Created On: {{ article.created_on }}</p>
+				<p>{{ article.content }}</p>
+				<span class="created_on_span">{{ article.created_on }}</span>
 			  </span>
+			  <div class="article-btn-container pt-3">
 			  {% if article.author.id == request.user.id %}
 			  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#editArticleModal">
 				  DELETE
@@ -43,8 +44,8 @@
 			  </div>
 			  <a href="{% url 'edit_article' article.id %}" class="btn btn-outline-info text-dark text-uppercase">EDIT</a>
 			  {% endif %}
+			</div>
 		</div>
 	</div>
-
 </div>
 {% endblock %}

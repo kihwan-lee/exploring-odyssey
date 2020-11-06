@@ -2,52 +2,58 @@
 {% load static %}
 {% block content %}
 
-<!-- {% block title %}
-All Cities
-{% endblock %} -->
-
 <!-- <h1>City Index Page</h1> -->
 
 <div class="search jumbotron-fluid mt-5">
-	<div id="carouselExampleIndicators" class="carousel slide my-carousel my-carousel" data-ride="carousel">
+	<div id="carouselindices" class="carousel slide my-carousel my-carousel" data-ride="carousel">
 		<ol class="carousel-indicators">
-		  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		  <li data-target="#carouselindices" data-slide-to="0" class="active"></li>
+		  <li data-target="#carouselindices" data-slide-to="1"></li>
+		  <li data-target="#carouselindices" data-slide-to="2"></li>
 		</ol>
 		<div class="carousel-inner" role="listbox">
-		  <div class="carousel-item active" style="background-image: url('https://i.imgur.com/NnzxG4S.jpg')">
+		  <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1501446529957-6226bd447c46?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80')">
 	
 		  </div>
-			<div class="carousel-item " style="background-image: url('https://i.imgur.com/w439mEw.jpg')">
+			<div class="carousel-item " style="background-image: url('https://images.unsplash.com/photo-1496531693211-31c5234a5ea9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80')">
 	
 		  </div>
-		  <div class="carousel-item " style="background-image: url('https://i.imgur.com/cpIrOo1.jpg')">
+		  <div class="carousel-item " style="background-image: url('https://images.unsplash.com/photo-1498307833015-e7b400441eb8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80')">
 	
 		  </div>
 		</div>
-		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+		<a class="carousel-control-prev" href="#carouselindices" role="button" data-slide="prev">
 		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 		  <span class="sr-only">Previous</span>
 		</a>
-		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+		<a class="carousel-control-next" href="#carouselindices" role="button" data-slide="next">
 		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		  <span class="sr-only">Next</span>
 		</a>
 	  </div>
 	</div>
 </div>
+<div class="recentArticles container-fluid">
+	<h1 class="search-span text-uppercase">Recent Articles</h1>
+	<div class="carousel slide">
+		<div class="carousel-inner" role="listbox">
+		{% for article in articles %}
+			<div class="carousel-item">
+				<div class="row">
+					<a href="{% url 'article_detail' article.id %}">
+						<h4>{{ article.title }}</h4>
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+		{% empty %}
+			<p>No articles have been added yet.</p>	
+	</div>
+</div>
 
-<p>Articles</p>
 
-  <ul>
-    {% for article in articles %}
-	  <a href="{% url 'article_detail' article.id %}">
-	    <li>{{ article }}</li>
-	  </a>
-	{% empty %}
-	    <li>No articles have been added yet.</li>
-	{% endfor %}
-  </ul>
+
+
 
 {% endblock %}
