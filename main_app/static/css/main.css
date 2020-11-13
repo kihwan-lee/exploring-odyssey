@@ -116,7 +116,7 @@ label {
     background:#f5f5f5;
     transition: all 200ms ease-in-out;
 }
-.homeNav .nav-logo span:nth-child(1) {
+/* .homeNav .nav-logo span:nth-child(1) {
     top: 30%;
 }
 .homeNav .nav-logo span:nth-child(2) {
@@ -124,7 +124,7 @@ label {
 }
 .homeNav .nav-logo span:nth-child(3) {
     top: 70%;
-}
+} */
 
 .homeNav .links {
     position: absolute;
@@ -198,8 +198,6 @@ label {
 .profile-pic-header {
     width: 200px;
     border-radius: 50%;
-    border-style: solid;
-    border-width: thin;
 }
 
 .profile-pic {
@@ -207,9 +205,11 @@ label {
     border-radius: 50%;
 }
 
-.nav-tabs {
-    border-bottom: 1px solid #000;
+.profile-nav {
+    display: inline-table;
+    vertical-align: top;
 }
+
 
 .edit-details {
     text-transform: lowercase;
@@ -243,9 +243,26 @@ label {
     text-decoration: underline;
 }
 
+#tab-id {
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.2em;
+    background-position: 0 88%;
+    transition: background-size 0.25s ease-in;
+}
+
+#tab-id:hover {
+    text-decoration: none !important;
+}
+
 #tab-id:active, #tab-id:focus {
-    text-decoration: underline;
-    text-decoration-color: #000;
+    /* text-decoration: underline;
+    text-decoration-color: #000; */
+    background-size: 100% 100%;
+}
+
+.tab-content {
+    display: table-cell;
 }
 
 .inner-header {
@@ -267,6 +284,10 @@ label {
 /*********************/
 /*   Article Index   */
 /*********************/
+
+a#article-hover {
+    font-size: 1.5rem !important;
+}
 
 li.article-lists {
     list-style: none !important;
@@ -318,6 +339,10 @@ textarea {
     margin: 0 0 !important;
 }
 
+.location-content {
+    display: block !important;
+}
+
 .underline {
     text-decoration-color: aquamarine;
 }
@@ -325,18 +350,56 @@ textarea {
 .btn-outline-info {
     color: #558071 !important;
     border-color: #7FFED4;
+    border-style: solid;
 }
 
 .btn-outline-info:hover {
     color: #fff !important;
     background-color: #7FFED4 !important;
     border-color: #7FFED4 !important;
+    border-style: solid;
 }
 
 .btn-container {
     float: right;
 }
+/*********************/
+/*   Cities Detail   */
+/*********************/
 
+.city-header {
+    font-family: 'Josefin Sans', sans-serif !important;
+    font-weight: 700 !important;
+    color: white;
+    opacity: .6;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 12rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.location-card {
+    background-color: #DBEADD !important;
+}
+
+.location-body {
+    font-size: 1.3rem;
+}
+
+.poi-header, .article-header {
+    font-weight: 600;
+}
+
+.points-of-interests {
+    list-style: none !important;
+    font-size: 1.5rem;
+}
+
+.poi {
+    color: #50966f;
+}
 /*********************/
 /* Media Breakpoints */
 /*********************/

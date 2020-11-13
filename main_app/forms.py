@@ -1,10 +1,10 @@
 from django.forms import ModelForm
-from .models import Author, Article, Comment
+from .models import Author, Article, Comment, Location
 
 class Profile_Form(ModelForm):
     class Meta:
         model = Author
-        fields = ['name', 'city', 'imageURL']
+        fields = ['name', 'location', 'imageURL'] # 'location'
 
 class Article_Form(ModelForm):
     class Meta:
@@ -17,3 +17,7 @@ class Comment_Form(ModelForm):
         model = Comment
         fields = ('name', 'email', 'body')
 
+class Search_Form(ModelForm):
+    class Meta:
+        model = Location
+        fields = ('location',)
