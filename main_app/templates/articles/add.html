@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<form method="POST" action="{% url 'article_add' city.id %}">
+<form method="POST" action="{% url 'article_add' location.id %}">
   {% csrf_token %}
   {{ new_form.as_p }}
   <button type="submit" class="btn-info">Create Article</button>

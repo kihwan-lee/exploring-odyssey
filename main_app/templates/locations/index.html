@@ -10,18 +10,23 @@
         <div class="row w-50 justify-content-center">
           <div class="col-sm-8">
             <div class="form-group">
-              <form class="city-search-form" novalidate>
-                <select id="locations" data-test="homepage-header-search-form-input" data-live-search="true" class="selectpicker form-control">
+              <form action="/locations/" class="city-search-form">
+                <select id="location_id" data-test="homepage-header-search-form-input" data-live-search="true" class="selectpicker form-control">
                   <option value="" disabled selected>-- Search Your Destination --</option>
-                  <option>USA</option>
-                  {% comment %}
-                  {% for location in locations %}
-                  <option value="{{ location.id }}"> {{location.location_name}}</option>
+                  {% for location in location %}
+                  <option value="{{ location.id }}">{{ location.location_name }}</option>
                   {% endfor %}
-                  {% endcomment %}
                 </select>
-                <input type="button" id="search-button" class="btn-outline-info mt-2 btn-sm" value="Discover!">
+              <input type="submit" id="search-button" onclick="citiesSearch()" class="btn-outline-info mt-2 btn-sm" value="Discover!">
               </form>
+              <!-- <script type="text/javascript">
+                function citiesSearch() {
+                  document.querySelector('.city-search-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    window.location= document.getElementById('location_id').value;
+                  });
+                }
+              </script> -->
             </div>
           </div>
         </div>
@@ -35,31 +40,31 @@
     <h1 class="search-span text-uppercase">Browse By Popular Destinations</h1>
     <div class="cityRow row">
       <div class="cityCard column">
-        <a href="{% url 'city_detail' city_id=7 %}">
+        <a href="{% url 'location_detail' location_id=7 %}">
           <img alt="australia" src="{% static 'images/cities/australia.jpg' %}">
           <h3 class="cityCardName text-uppercase">australia</h3>
         </a>
-        <a href="{% url 'city_detail' city_id=4 %}">
+        <a href="{% url 'location_detail' location_id=35 %}">
           <img alt="greece" src="{% static 'images/cities/greece.jpg' %}">
           <h3 class="cityCardName text-uppercase">greece</h3>
         </a>
       </div>
       <div class="cityCard column">
-        <a href="{% url 'city_detail' city_id=2 %}">
+        <a href="{% url 'location_detail' location_id=9 %}">
           <img alt="japan" src="{% static 'images/japan.jpg' %}">
           <h3 class="cityCardName text-uppercase">japan</h3>
         </a>
-        <a href="{% url 'city_detail' city_id=5 %}">
+        <a href="{% url 'location_detail' location_id=5 %}">
           <img alt="morocco" src="{% static 'images/cities/morocco.jpg' %}">
           <h3 class="cityCardName text-uppercase">morocco</h3>
         </a>
       </div>
       <div class="cityCard column">
-        <a href="{% url 'city_detail' city_id=3 %}">
+        <a href="{% url 'location_detail' location_id=8 %}">
           <img alt="indonesia" src="{% static 'images/bali.jpeg' %}">
           <h3 class="cityCardName text-uppercase">indonesia</h3>
         </a>
-        <a href="{% url 'city_detail' city_id=6 %}">
+        <a href="{% url 'location_detail' location_id=36 %}">
           <img alt="iceland" src="{% static 'images/cities/iceland.jpg' %}">
           <h3 class="cityCardName text-uppercase">iceland</h3>
         </a>
