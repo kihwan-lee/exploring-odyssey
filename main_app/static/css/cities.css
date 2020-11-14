@@ -152,11 +152,19 @@ label {
     justify-content: center;
 }
 
+select#location_id {
+    text-align-last: center !important;
+    color: #fff;
+    background-color: transparent;
+}
+
+
 .btn-outline-info {
     color: #fff !important;
     border-color: transparent;
-    background-color: #6faa96 !important;
+    background-color: rgba(111, 170, 150, .8) !important;
     border: none !important;
+    width: -webkit-fill-available;
 }
 
 .btn-outline-info:hover {

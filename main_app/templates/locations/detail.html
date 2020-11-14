@@ -1,0 +1,101 @@
+{% extends 'article-base.html' %}
+{% load static %}
+
+{% block content %}
+
+<a href="{% url 'authors_index' %}"><h3 class="mt-4 text-dark back-btn"> ← back</h3></a>
+
+<div class="search jumbotron-fluid">
+  <div class="city-header">{{location.location_name}}</div>
+    <img class="article-detail-img" src="https://source.unsplash.com/random/?{{location.location_name}}"`>
+  </div>
+</div>
+
+<div class= "container-fluid text-center">
+  <ul class="nav nav-tabs justify-content-center">
+    <li class="active tab-header mr-3 py-2 px-2"><a data-toggle="tab" id="tab-id" href="#articles">Articles</a></li>
+    <li class="tab-header mr-3 py-2 px-2"><a data-toggle="tab" id="tab-id" href="#location-info">Location Info</a></li>
+  </ul>
+
+  <div class="tab-content location-content">
+    <div id="articles" class="tab-pane fade in active">
+      <div class="card location-card pt-4">
+        <div class="article-detail-row pt-5 row justify-content-center">
+          <h1 class="article-header mb-5 text-uppercase">Articles about <u class="underline">{{ location.location_name }}</u></h1>
+		    </div>	
+          <div class="article-detail-row row pb-5">
+              <div class="art-detail-author col-xl-4 text-center">
+                  <h2><u class="underline">Recent Articles</u></h2>
+                    <ul class="good-bye-padding">
+                  {% for article in location.article_set.all %}
+                    <li class="article-lists"><a id="article-hover" href="{% url 'article_detail' article.id %}">{{ article.title }}</a></u></li>
+                  {% endfor %}
+                  </ul>
+              </div>
+                <div class="art-detail-author col-xl-4 text-center">
+                  <h2><u class="underline">Author:</u></h2>
+                  <ul class="good-bye-padding">
+                    {% for article in location.article_set.all %}
+                    <li class="article-lists"><h4>{{ article.author }}</h4></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="art-detail-author col-xl-4 text-center">
+                  <h2>Created on: </h2>
+                  <ul class="good-bye-padding">
+                    {% for article in location.article_set.all %}
+                    <li class="article-lists"><u class="underline"><h4>{{ article.created_on }}</h4></u></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div class="art-detail-author col-xl-12 text-center">
+                  <form action="{% url 'article_add' location.id %}">
+                    <input class="add-post-btn mt-5 rounded bg-transparent btn-outline-info h-50 text-light" type="submit" value="ADD NEW ARTICLE" />
+                  </form>
+                </div>
+          </div>
+      </div>
+    </div>
+    <div id="location-info" class="tab-pane fade">
+      <div class="card location-card pt-4">
+        <div class="card-title">
+          <h3 class="poi-header text-uppercase">Plan a trip to {{location.location_name}}</h3>
+        </div>
+        <div class="card-body location-body">
+          <h3>{{location.location_desc}}</h3> 
+          {% if location.english_proficiency == True %}
+            <p>The natives of this country are proficient in English.</p>
+          {% else %}
+            <p>The natives of this country are not as proficient in English.</p>
+          {% endif %}
+          {% if location.english_proficiency == True and location.primary_lang == 'English' %}
+            <p>Their primary language is also {{location.primary_lang}}.</p>
+            {% else %}
+            <p>Their primary language is {{location.primary_lang}}.</p>
+            {% endif %}
+            <p>To take home a souvenir, you'll need to make sure to be spending in {{location.currency}}.</p>
+            {% if location.ideal_season == 'All Year' %}
+            <p>{{location.location_name}} is available {{location.ideal_season}} to visit!</p>
+            {% else %}
+            <p>It is recommended to visit {{location.location_name}} during the {{location.ideal_season}}.</p>
+          {% endif %}
+          <ul class="points-of-interests">
+            <h3 class="poi-header text-uppercase mt-5">{{location.location_name}}'s points of interest</h3>
+            <li class="poi">
+              {{location.poi_1}}
+            </li>
+            <li class="poi">
+              {{location.poi_2}}
+            </li>
+            <li class="poi">
+              {{location.poi_3}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+{% endblock %} 

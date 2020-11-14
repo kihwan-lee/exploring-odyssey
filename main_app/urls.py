@@ -7,9 +7,9 @@ urlpatterns = [
     # Static Routes
     path('', views.home, name='home'),
 
-    # City Routes
-    path('cities/', views.cities_index, name='cities_index'),
-    path('cities/<int:city_id>', views.city_detail, name='city_detail'),
+    # Location Routes
+    path('locations/', views.location_index, name='location_index'),
+    path('locations/<int:location_id>', views.location_detail, name='location_detail'),
 
     # Article Routes
     # Page that shows all articles.
@@ -19,7 +19,7 @@ urlpatterns = [
     path('articles/<int:article_id>/', views.article_detail, name='article_detail'),
     path('articles/<int:article_id>/edit/', views.edit_article, name='edit_article'),
     path('articles/<int:article_id>/delete/', views.delete_article, name='delete_article'),
-    path('cities/<int:city_id>/articles/add/', views.article_add, name='article_add'),
+    path('locations/<int:location_id>/articles/add/', views.article_add, name='article_add'),
 
     # Author Routes
     path('authors/', views.authors_index, name='authors_index'),
