@@ -1,1 +1,1 @@
-web: gunicorn project_wayfarer.wsgi
+web: gunicorn exploring-odyssey.wsgi
